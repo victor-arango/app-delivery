@@ -5,18 +5,38 @@ import 'package:flutter/material.dart';
 import '../../custom-widgets/BackButtons/back_button.dart';
 import '../../custom-widgets/Headers/header_text.dart';
 
-class CollectionsDetailPage extends StatelessWidget {
+class CollectionsDetailPage extends StatefulWidget {
   const CollectionsDetailPage({super.key});
+
+  @override
+  State<CollectionsDetailPage> createState() => _CollectionsDetailPageState();
+}
+
+class _CollectionsDetailPageState extends State<CollectionsDetailPage> {
+  final ScrollController _scrollController = ScrollController();
+  String textView = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {
+        textView = _scrollController.offset > 150 ? 'Hamburguesas' : '';
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 230,
             pinned: true,
-            // title: Text('Hamburguesas'), Falta acondicionar
+            centerTitle: true,
+            title: Text(textView),
             backgroundColor: MyColors.primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(

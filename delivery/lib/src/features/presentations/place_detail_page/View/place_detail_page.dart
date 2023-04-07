@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_double.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/utils/my_colors.dart';
@@ -9,10 +11,22 @@ class PlaceDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: MyColors.primaryColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          onPressed: () {},
+          label: headerText(
+              text: 'Agregar al carrito ',
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 17)),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 395,
+            pinned: true,
             backgroundColor: MyColors.primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
@@ -41,9 +55,13 @@ class PlaceDetailPage extends StatelessWidget {
                 ],
               ),
             ),
-            // leading: Builder(builder: (BuildContext context) {
-            //   return BackButton(onPressed: () {}, color: Colors.white);
-            // }),
+            leading: Builder(builder: (BuildContext context) {
+              return BackButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  color: Colors.white);
+            }),
             actions: [
               Container(
                 margin: const EdgeInsets.all(10),
@@ -60,7 +78,14 @@ class PlaceDetailPage extends StatelessWidget {
             _headers(texto: ' Productos Populares'),
             _sliderCard(),
             _headers(texto: 'Menú completo'),
-            // _menuList(context)
+            _menuList(context),
+            _headers(texto: 'Reseñas'),
+            _reviews(),
+            _headers(texto: 'Calificanos'),
+            _youRaiting(),
+            const SizedBox(
+              height: 150.0,
+            ),
           ]))
         ],
       ),
@@ -215,40 +240,37 @@ Widget _offerBanner() {
     color: MyColors.bkgBanner,
     padding: const EdgeInsets.all(20),
     height: 95.0,
-    child: Row(
-
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              headerText(
-                  text: 'Recoge tu orden',
-                  color: MyColors.primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0),
-              headerText(
-                  text:
-                      'recoge a tu tiempo.  tu pedido está listo \n cuando tú lo estás',
-                  color: MyColors.negro,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13.0)
-            ],
-          ),
-          const Spacer(),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  elevation: 0.5,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  backgroundColor: MyColors.primaryColor),
-              onPressed: () {},
-              child: headerText(
-                  text: 'Ordena Ahora',
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0)),
-        ]),
+          headerText(
+              text: 'Recoge tu orden',
+              color: MyColors.primaryColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0),
+          headerText(
+              text:
+                  'recoge a tu tiempo.  tu pedido está listo \n cuando tú lo estás',
+              color: MyColors.negro,
+              fontWeight: FontWeight.w400,
+              fontSize: 13.0)
+        ],
+      ),
+      const Spacer(),
+      ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              elevation: 0.5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              backgroundColor: MyColors.primaryColor),
+          onPressed: () {},
+          child: headerText(
+              text: 'Ordena Ahora',
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0)),
+    ]),
   );
 }
 
@@ -331,16 +353,291 @@ Widget _cards() {
   );
 }
 
-// Widget _menuList(BuildContext context) {
-//   return Column(
-//     children: [
-//       _menuList(
-//         context,
-//       ),
-//     ],
-//   );
-// }
+Widget _menuList(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.only(left: 10.0),
+    child: Column(
+      children: [
+        _menuItem(context, 'Ensaladas', '2'),
+        _menuItem(context, 'Ensaladas', '2'),
+        _menuItem(context, 'Ensaladas', '2'),
+        _menuItem(context, 'Ensaladas', '2'),
+        _menuItem(context, 'Ensaladas', '2'),
+        _menuItem(context, 'Ensaladas', '2'),
+      ],
+    ),
+  );
+}
 
-// Widget _menuItem(BuildContext context, String texto, String itemCount) {
-//   return Container();
-// }
+Widget _menuItem(BuildContext context, String texto, String itemCount) {
+  return Container(
+    decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: MyColors.divider))),
+    child: Column(
+      children: [
+        ListTile(
+          title: headerText(
+              text: texto,
+              fontWeight: FontWeight.w300,
+              color: MyColors.primaryColorDark,
+              fontSize: 17.0),
+          trailing: headerText(
+              text: itemCount,
+              fontWeight: FontWeight.w300,
+              color: MyColors.primaryColorDark,
+              fontSize: 17.0),
+        ),
+        _sliderCard()
+      ],
+    ),
+  );
+}
+
+Widget _reviews() {
+  return Container(
+    height: 130,
+    padding: const EdgeInsets.only(left: 10),
+    child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int index) {
+          return _cardsReviews();
+        }),
+  );
+}
+
+Widget _cardsReviews() {
+  return Container(
+    width: 400,
+    margin: const EdgeInsets.only(top: 10),
+    padding: const EdgeInsets.only(left: 10, right: 10),
+    child: Column(
+      children: [
+        Row(
+          children: [
+            Row(
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: const Image(
+                      width: 50,
+                      height: 43.0,
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          'https://images.unsplash.com/photo-1641288883869-c463bc6c2a58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'),
+                    )),
+                Container(
+                  width: 200,
+                  margin: const EdgeInsets.only(left: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      headerText(
+                          text: 'David Ruiz',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                      headerText(
+                          text: '25 Reseñas',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: MyColors.gris),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Container(
+                      color: MyColors.primaryColor,
+                      width: 60,
+                      height: 30,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            headerText(
+                                text: '4',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12),
+                            const Icon(
+                              Icons.star,
+                              color: Colors.white,
+                              size: 14,
+                            )
+                          ]),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 10),
+          child: headerText(
+              text:
+                  'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)',
+              color: MyColors.gris,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              textAlign: TextAlign.left),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 10),
+          child: headerText(
+            text: 'Ver todas las reseñas',
+            color: MyColors.primaryColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _youRaiting() {
+  return Container(
+    margin: const EdgeInsets.only(top: 10),
+    padding: const EdgeInsets.only(left: 10, right: 10),
+    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                color: MyColors.bkgBanner,
+                width: 60,
+                height: 30,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  headerText(
+                      text: '1',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12),
+                  Icon(
+                    Icons.star,
+                    color: MyColors.primaryColor,
+                    size: 14,
+                  )
+                ]),
+              ),
+            ),
+          ),
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                color: MyColors.bkgBanner,
+                width: 60,
+                height: 30,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  headerText(
+                      text: '2',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12),
+                  Icon(
+                    Icons.star,
+                    color: MyColors.primaryColor,
+                    size: 14,
+                  )
+                ]),
+              ),
+            ),
+          ),
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                color: MyColors.bkgBanner,
+                width: 60,
+                height: 30,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  headerText(
+                      text: '3',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12),
+                  Icon(
+                    Icons.star,
+                    color: MyColors.primaryColor,
+                    size: 14,
+                  )
+                ]),
+              ),
+            ),
+          ),
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                color: MyColors.primaryColor,
+                width: 60,
+                height: 30,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  headerText(
+                      text: '4',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12),
+                  const Icon(
+                    Icons.star,
+                    color: Colors.white,
+                    size: 14,
+                  )
+                ]),
+              ),
+            ),
+          ),
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                color: MyColors.bkgBanner,
+                width: 60,
+                height: 30,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  headerText(
+                      text: '5',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12),
+                  Icon(
+                    Icons.star,
+                    color: MyColors.primaryColor,
+                    size: 14,
+                  )
+                ]),
+              ),
+            ),
+          ),
+        ],
+      ),
+      Container(
+        margin: const EdgeInsets.only(top: 10, left: 20),
+        child: headerText(
+            text: 'Nos encantaría saber más sobre su experiencia!',
+            color: MyColors.gris,
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            textAlign: TextAlign.left),
+      ),
+      Container(
+        margin: const EdgeInsets.only(top: 10, left: 20),
+        child: headerText(
+          text: '+ Escribe tu reseña',
+          color: MyColors.primaryColor,
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ]),
+  );
+}
