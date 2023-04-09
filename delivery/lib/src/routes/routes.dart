@@ -7,10 +7,11 @@ import 'package:delivery/src/features/presentations/forgot_password_page/View/fo
 import 'package:delivery/src/features/presentations/sing_up_page/View/sing_up_page.dart';
 import 'package:delivery/src/features/presentations/tabs/tabs_page.dart';
 import 'package:delivery/src/features/presentations/collections_page/View/collections_page.dart';
-import 'package:delivery/src/features/presentations/search_page/View/searchView.dart';
+import 'package:delivery/src/features/presentations/search_page/View/search_view.dart';
 import '../features/presentations/collections_detail_page/View/collection_detail_page.dart';
 import '../features/presentations/filter_page/View/filter_page.dart';
 import '../features/presentations/place_detail_page/View/place_detail_page.dart';
+import '../features/presentations/profile_detail_page/View/profile_detail_page.dart';
 
 final routes = <String, WidgetBuilder>{
   'welcome': (BuildContext context) => const WelcomePage(),
@@ -23,4 +24,5 @@ final routes = <String, WidgetBuilder>{
   'collections': (BuildContext context) => const CollectionsPage(),
   'collections-detail': (BuildContext context) => const CollectionsDetailPage(),
   'place-detail': (BuildContext context) => const PlaceDetailPage(),
+  'profile-detail': (BuildContext context) => const ProfileDetailPage(),
 };

@@ -1,6 +1,7 @@
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/my_colors.dart';
+import '../../../../utils/styles/box_decoration_shadows.dart';
 
 Widget favouriteCard({
   required context,
@@ -25,15 +26,7 @@ Widget favouriteCard({
         left: marginLeft),
     padding: const EdgeInsets.only(top: 20, left: 20, bottom: 20),
     width: double.infinity,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
-        boxShadow: const [
-          BoxShadow(
-              color: Color.fromRGBO(210, 211, 215, 1.0),
-              offset: Offset(0, 5),
-              blurRadius: 10.0)
-        ]),
+    decoration: createDecorationWithShadows(),
     child: Row(
       children: [
         ClipRRect(
@@ -119,21 +112,14 @@ Widget favouriteCard({
                             fontSize: 13.0),
                       ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 25.0),
-                      width: 110.0,
-                      height: 25.0,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0.5,
-                              shape: const StadiumBorder(),
-                              backgroundColor: MyColors.primaryColor),
-                          onPressed: () {},
-                          child: headerText(
-                              text: buttonText,
-                              fontSize: 11.0,
-                              color: Colors.white)),
-                    )
+                    // Container(
+                    //     margin: const EdgeInsets.symmetric(horizontal: 0.0),
+                    //     width: 110.0,
+                    //     height: 25.0,
+                    //     child: createButton(
+                    //         buttonColor: MyColors.primaryColor,
+                    //         labelButton: buttonText,
+                    //         labelFontSize: 11.0))
                   ],
                 )
               ],

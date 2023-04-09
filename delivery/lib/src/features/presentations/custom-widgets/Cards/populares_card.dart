@@ -1,6 +1,7 @@
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/my_colors.dart';
+import '../Buttons/rounded_button.dart';
 
 Widget popularesCard({
   required context,
@@ -88,15 +89,10 @@ Widget popularesCard({
                           width: 100.0,
                           height: 18.0,
                           child: hasActionButton
-                              ? ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      elevation: 0.5,
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: MyColors.primaryColor),
-                                  onPressed: () {},
-                                  child: Text(buttonText,
-                                      style: const TextStyle(fontSize: 11.0)),
-                                )
+                              ? createButton(
+                                  buttonColor: MyColors.primaryColor,
+                                  labelButton: buttonText,
+                                  labelFontSize: 11)
                               : const Text(''),
                         )
                       ],

@@ -41,11 +41,11 @@ class ForgotPassword extends StatelessWidget {
             _emailInput(),
             GestureDetector(
               onTap: () => _showAlertReset(context),
-              child: roundedButton(
-                context: context,
-                color: MyColors.primaryColor,
-                labelButton: 'Restablecer',
-              ),
+              child: createButton(
+                  context: context,
+                  buttonColor: MyColors.primaryColor,
+                  labelButton: 'Restablecer',
+                  shape: const StadiumBorder()),
             ),
           ]),
         ),
@@ -99,9 +99,10 @@ void _showAlertReset(BuildContext context) {
       'prueba',
       GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, 'tabs');
+          Navigator.pushNamed(context, 'login');
         },
-        child: roundedButton(
+        child: createButton(
+          buttonColor: MyColors.primaryColor,
           labelButton: "Confirmar",
         ),
       ));

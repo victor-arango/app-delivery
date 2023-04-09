@@ -19,7 +19,7 @@ class _FavouriteTabState extends State<FavouriteTab> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            leading: Text(''),
+            leading: const Text(''),
             backgroundColor: MyColors.white,
             centerTitle: true,
             title: headerText(
@@ -31,7 +31,7 @@ class _FavouriteTabState extends State<FavouriteTab> {
           SliverList(
               delegate: SliverChildListDelegate([
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   favouriteCard(

@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_unnecessary_containers
+
+import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/features/presentations/tabs/my_order_tab/View/components/empty_order_view.dart';
 import 'package:delivery/src/utils/my_colors.dart';
@@ -124,16 +127,10 @@ Widget _cardOrderTopContent() {
                   margin: const EdgeInsets.only(left: 35.0),
                   width: 100.0,
                   height: 18.0,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0.5,
-                          shape: const StadiumBorder(),
-                          backgroundColor: MyColors.primaryColor),
-                      onPressed: () {},
-                      child: headerText(
-                          text: 'Domicilio Gratis',
-                          fontSize: 11,
-                          color: MyColors.white))),
+                  child: createButton(
+                      labelButton: 'Domicilio Gratis',
+                      labelFontSize: 11.0,
+                      buttonColor: MyColors.primaryColor)),
             ],
           ),
         )
@@ -185,7 +182,7 @@ Widget _moreContent(BuildContext ccontext) {
 
 Widget _checkoutResume(BuildContext context) {
   return Container(
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     margin: const EdgeInsets.symmetric(vertical: 10),
     width: double.infinity,
     decoration: BoxDecoration(
@@ -209,8 +206,8 @@ Widget _checkoutResume(BuildContext context) {
 }
 
 Widget _itemsCheckoutResume({
-  title: String,
-  value: String,
+  title = String,
+  value = String,
 }) {
   return Container(
     decoration: BoxDecoration(
@@ -238,7 +235,7 @@ Widget _buttoCheckout(BuildContext context) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(),
+            const SizedBox(),
             Container(
               margin: const EdgeInsets.only(left: 50),
               child: headerText(

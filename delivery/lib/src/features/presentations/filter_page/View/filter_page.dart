@@ -1,6 +1,6 @@
-import 'package:delivery/src/features/presentations/filter_page/View/widgets-custom/cuisins_filters.dart';
-import 'package:delivery/src/features/presentations/filter_page/View/widgets-custom/list_tile_checked.dart';
-import 'package:delivery/src/features/presentations/filter_page/View/widgets-custom/prices_filter.dart';
+import 'package:delivery/src/features/presentations/filter_page/View/components/cuisins_filters.dart';
+import 'package:delivery/src/features/presentations/filter_page/View/components/list_tile_checked.dart';
+import 'package:delivery/src/features/presentations/filter_page/View/components/prices_filter.dart';
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_double.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/utils/my_colors.dart';
@@ -25,7 +26,7 @@ class PlaceDetailPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: 395,
+            expandedHeight: 300,
             pinned: true,
             backgroundColor: MyColors.primaryColor,
             flexibleSpace: FlexibleSpaceBar(
@@ -49,7 +50,7 @@ class PlaceDetailPage extends StatelessWidget {
                       _promoButton(),
                       _infoPlace(),
                       _infoPacleStats(),
-                      _offerBanner()
+                      // _offerBanner()
                     ],
                   )
                 ],
@@ -99,15 +100,11 @@ Widget _promoButton() {
     width: double.infinity,
     height: 25,
     child: Row(
-      children: [
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                elevation: 0.5,
-                shape: const StadiumBorder(),
-                backgroundColor: MyColors.primaryColor),
-            onPressed: () {},
-            child: headerText(
-                text: 'Domicilio Gratis', color: Colors.white, fontSize: 12.0)),
+      children: const [
+        // createButton(
+        //     buttonColor: MyColors.primaryColor,
+        //     labelButton: 'Domicilio Gratis',
+        //     labelFontSize: 12.0)
       ],
     ),
   );
@@ -235,6 +232,7 @@ Widget _infoPacleStats() {
   );
 }
 
+// ignore: unused_element
 Widget _offerBanner() {
   return Container(
     color: MyColors.bkgBanner,
@@ -258,18 +256,12 @@ Widget _offerBanner() {
         ],
       ),
       const Spacer(),
-      ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              elevation: 0.5,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              backgroundColor: MyColors.primaryColor),
-          onPressed: () {},
-          child: headerText(
-              text: 'Ordena Ahora',
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 15.0)),
+      createButton(
+        labelButton: 'Ordena Ahora',
+        labelFontSize: 13.0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        buttonColor: MyColors.primaryColor,
+      )
     ]),
   );
 }

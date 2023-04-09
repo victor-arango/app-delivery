@@ -13,7 +13,7 @@ Future showAlertDialog(BuildContext context, ImageProvider<Object> imagePath,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           content: SizedBox(
-            height: 400,
+            height: 350,
             child: Column(
               children: [
                 Container(
@@ -32,7 +32,7 @@ Future showAlertDialog(BuildContext context, ImageProvider<Object> imagePath,
                       fontSize: 20.0),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(15.0),
+                  margin: const EdgeInsets.only(top: 15.0),
                   child: Text(
                     headerSubTitle,
                     style: TextStyle(

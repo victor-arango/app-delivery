@@ -1,3 +1,4 @@
+import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
 import 'package:flutter/material.dart';
 import '../../../../../utils/my_colors.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
@@ -203,19 +204,13 @@ Widget _target(BuildContext context) {
                           fontWeight: FontWeight.w500,
                           fontSize: 13.0)),
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    width: 80.0,
-                    height: 18.0,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0.5,
-                          shape: const StadiumBorder(),
-                          backgroundColor: MyColors.primaryColor),
-                      onPressed: () {},
-                      child: const Text('Domicilio',
-                          style: TextStyle(fontSize: 11.0)),
-                    ),
-                  )
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                      width: 80.0,
+                      height: 18.0,
+                      child: createButton(
+                          buttonColor: MyColors.primaryColor,
+                          labelButton: 'Domicilio',
+                          labelFontSize: 11.0))
                 ],
               )
             ],

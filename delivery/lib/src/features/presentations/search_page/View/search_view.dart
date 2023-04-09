@@ -1,7 +1,7 @@
-import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
+import '../../../../utils/my_colors.dart';
 import '../../custom-widgets/Cards/vertical_card.dart';
 import '../../custom-widgets/Headers/header_double.dart';
 import '../../custom-widgets/Cards/populares_card.dart';
