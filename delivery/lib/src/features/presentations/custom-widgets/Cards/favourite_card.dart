@@ -13,7 +13,7 @@ Widget favouriteCard({
   required subtitle,
   required review,
   required ratings,
-  required buttonText,
+  String buttonText = '',
   required bool hasActionButton,
   required bool isFavourite,
   required ImageProvider<Object> image,

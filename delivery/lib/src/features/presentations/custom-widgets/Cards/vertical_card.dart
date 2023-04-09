@@ -4,7 +4,7 @@ import '../../../../utils/my_colors.dart';
 import '../Headers/header_text.dart';
 
 Widget cardVertical(
-    {BuildContext? context,
+    {required BuildContext context,
     required double width,
     required double height,
     required ImageProvider<Object> image,

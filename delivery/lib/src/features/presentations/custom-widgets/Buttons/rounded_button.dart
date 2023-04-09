@@ -2,27 +2,27 @@ import 'package:delivery/src/features/presentations/custom-widgets/Headers/heade
 import 'package:flutter/material.dart';
 
 Widget createButton(
-    {BuildContext? context,
+    {required BuildContext context,
     double width = 350.0,
     double height = 45.0,
     double radius = 20.0,
     bool isWithIcon = false,
     ImageProvider<Object>? icon,
-    String? labelButton,
+    required String labelButton,
     Color labelButtonColor = Colors.white,
     double labelFontSize = 15.0,
-    Color? buttonColor,
+    Color buttonColor = Colors.blue,
     OutlinedBorder? shape,
-    Function? func}) {
+    Function()? func}) {
   return Container(
       width: width,
       height: height,
       margin: const EdgeInsets.only(top: 30.0),
       child: isWithIcon
-          ? _elevationButtonWithIcon(radius, icon!, labelButton!,
-              labelButtonColor, labelFontSize, buttonColor!, shape, func)
-          : _elevationButtonNotIcon(radius, labelButton!, labelButtonColor,
-              labelFontSize, buttonColor!, shape, func));
+          ? _elevationButtonWithIcon(radius, icon!, labelButton,
+              labelButtonColor, labelFontSize, buttonColor, shape, func)
+          : _elevationButtonNotIcon(radius, labelButton, labelButtonColor,
+              labelFontSize, buttonColor, shape, func));
 }
 
 Widget _elevationButtonWithIcon(
@@ -33,7 +33,7 @@ Widget _elevationButtonWithIcon(
     double labelFontSize,
     Color color,
     OutlinedBorder? shape,
-    Function? func) {
+    Function()? func) {
   return ElevatedButton(
     onPressed: () {},
     style: ElevatedButton.styleFrom(
@@ -69,7 +69,7 @@ Widget _elevationButtonNotIcon(
     double labelFontSize,
     Color color,
     OutlinedBorder? shape,
-    Function? func) {
+    Function()? func) {
   return ElevatedButton(
     onPressed: () {},
     style: ElevatedButton.styleFrom(
