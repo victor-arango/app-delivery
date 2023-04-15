@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:delivery/src/features/presentations/welcome_page/View/welcome_page.dart';
 import 'package:delivery/src/features/presentations/login_page/View/login_page.dart';
 import 'package:delivery/src/features/presentations/forgot_password_page/View/forgot_password_page.dart';
-import 'package:delivery/src/features/presentations/sing_up_page/View/sing_up_page.dart';
+import 'package:delivery/src/features/presentations/register_page/View/register_page.dart';
 import 'package:delivery/src/features/presentations/tabs/tabs_page.dart';
 import 'package:delivery/src/features/presentations/collections_page/View/collections_page.dart';
 import 'package:delivery/src/features/presentations/search_page/View/search_view.dart';
@@ -17,7 +17,7 @@ final routes = <String, WidgetBuilder>{
   'welcome': (BuildContext context) => const WelcomePage(),
   'login': (BuildContext context) => const LoginPage(),
   'forgot-password': (BuildContext context) => const ForgotPassword(),
-  'sing-up': (BuildContext context) => const SingUpPage(),
+  'sing-up': (BuildContext context) => const RegisterPage(),
   'tabs': (BuildContext context) => const TabsPage(),
   'search': (BuildContext context) => const SearchPage(),
   'filter': (BuildContext context) => const FilterPage(),
