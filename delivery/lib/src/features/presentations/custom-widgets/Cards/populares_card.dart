@@ -90,6 +90,7 @@ Widget popularesCard({
                           height: 18.0,
                           child: hasActionButton
                               ? createButton(
+                                context: context,
                                   buttonColor: MyColors.primaryColor,
                                   labelButton: buttonText,
                                   labelFontSize: 11)

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'header_text.dart';
 
 Widget headerDoubleText(
-    {required textHeader, required textAction, Function? func}) {
+    {required textHeader, required textAction, Function()? func}) {
   return Row(
     children: [
       headerText(text: textHeader, fontSize: 20.0),

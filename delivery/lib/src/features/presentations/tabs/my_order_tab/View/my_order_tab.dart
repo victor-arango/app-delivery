@@ -79,7 +79,7 @@ Widget _cardOrder(BuildContext context) {
       children: [
         Row(
           children: [
-            _cardOrderTopContent(),
+            _cardOrderTopContent(context),
           ],
         ),
         Column(
@@ -96,7 +96,7 @@ Widget _cardOrder(BuildContext context) {
   );
 }
 
-Widget _cardOrderTopContent() {
+Widget _cardOrderTopContent(BuildContext context) {
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 10.0),
     child: Column(
@@ -128,6 +128,7 @@ Widget _cardOrderTopContent() {
                   width: 100.0,
                   height: 18.0,
                   child: createButton(
+                      context: context,
                       labelButton: 'Domicilio Gratis',
                       labelFontSize: 11.0,
                       buttonColor: MyColors.primaryColor)),

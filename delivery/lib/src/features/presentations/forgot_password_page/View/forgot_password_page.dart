@@ -102,6 +102,7 @@ void _showAlertReset(BuildContext context) {
           Navigator.pushNamed(context, 'login');
         },
         child: createButton(
+          context: context,
           buttonColor: MyColors.primaryColor,
           labelButton: "Confirmar",
         ),

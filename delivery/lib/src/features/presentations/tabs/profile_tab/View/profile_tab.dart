@@ -1,5 +1,7 @@
+import 'package:delivery/src/features/presentations/login_page/login_controller.dart';
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../../../custom-widgets/Headers/header_text.dart';
 
@@ -11,11 +13,25 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  final loginController _con = loginController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      _con.init(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [_header(context), _contentProfile()],
+        children: [
+          _header(context),
+          _contentProfile(),
+        ],
       ),
     );
   }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="25e4fdd8-0f56-4ec2-a826-839cb5798b0e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/api/environment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/api/environment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/custom-widgets/my_snackbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/custom-widgets/my_snackbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/login_page/login_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/login_page/login_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/View/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/View/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/register_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/register_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/tabs/profile_tab/View/profile_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/tabs/profile_tab/View/profile_tab.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/models/response/response_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/models/response/response_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/models/users/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/models/users/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/provider/users_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/provider/users_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/routes/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/routes/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2OXEvZaSzLlLvceiBxoqNqvaF7y" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/delivery/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter.main.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="25e4fdd8-0f56-4ec2-a826-839cb5798b0e" name="Default Changelist" comment="" />
+      <created>1681698760586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681698760586</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1681698858001">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="414" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1681698858001" />
+    <state x="92" y="92" width="1736" height="848" key="AVDManager" timestamp="1681699237930">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="92" y="92" width="1736" height="848" key="AVDManager/0.0.1920.1032@0.0.1920.1032" timestamp="1681699237930" />
+    <state x="740" y="271" key="FileChooserDialogImpl" timestamp="1681698867078">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="740" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1681698867078" />
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom" timestamp="1681699801459">
+      <screen x="1920" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1032/1920.0.1920.1032@1920.0.1920.1032" timestamp="1681699801459" />
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1681699234088" />
+    <state width="1899" height="279" key="GridCell.Tab.0.center" timestamp="1681699801458">
+      <screen x="1920" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1032/1920.0.1920.1032@1920.0.1920.1032" timestamp="1681699801458" />
+    <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1681699234088" />
+    <state width="1899" height="279" key="GridCell.Tab.0.left" timestamp="1681699801457">
+      <screen x="1920" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1032/1920.0.1920.1032@1920.0.1920.1032" timestamp="1681699801457" />
+    <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1681699234088" />
+    <state width="1899" height="279" key="GridCell.Tab.0.right" timestamp="1681699801458">
+      <screen x="1920" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1032/1920.0.1920.1032@1920.0.1920.1032" timestamp="1681699801458" />
+    <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1681699234088" />
+    <state x="461" y="161" key="SettingsEditor" timestamp="1681698872168">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1681698872168" />
+  </component>
+</project>

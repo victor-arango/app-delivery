@@ -233,7 +233,7 @@ Widget _infoPacleStats() {
 }
 
 // ignore: unused_element
-Widget _offerBanner() {
+Widget _offerBanner(BuildContext context) {
   return Container(
     color: MyColors.bkgBanner,
     padding: const EdgeInsets.all(20),
@@ -257,6 +257,7 @@ Widget _offerBanner() {
       ),
       const Spacer(),
       createButton(
+        context: context,
         labelButton: 'Ordena Ahora',
         labelFontSize: 13.0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
