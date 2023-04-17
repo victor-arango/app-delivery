@@ -64,6 +64,16 @@ class RegisterController {
       return;
     }
 
+    if (RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
+    } else {
+      MySnackbar.show(
+          context: context,
+          title: 'Alerta',
+          contentType: ContentType.warning,
+          text: 'Debes ingresar un correo electronico valido');
+      return;
+    }
+
     User user = User(
         email: email,
         name: name,
@@ -71,27 +81,18 @@ class RegisterController {
         phone: phone,
         password: password);
 
-    print(email);
-    print(name);
-    print(lastName);
-    print(phone);
-    print(password);
-    print(confirmPassword);
-
     ResponseApi? responseApi = await usersProvider.create(user);
 
-    if (responseApi != null) {
-      MySnackbar.show(
-          context: context,
-          title: 'Exito',
-          contentType: ContentType.success,
-          text: responseApi.message ?? 'se produjo un error');
-    } else {
-      MySnackbar.show(
-          context: context,
-          title: 'Error',
-          contentType: ContentType.failure,
-          text: 'Se produjo un error vuelve a intentarlo');
-    }
+    MySnackbarResponseApi.show(
+        context: context,
+        title: responseApi?.success,
+        contentType: responseApi?.success,
+        text: responseApi?.message);
+
+    if (responseApi?.success == true) {
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.pushReplacementNamed(context!, 'login');
+      });
+    } else {}
   }
 }

@@ -1,3 +1,6 @@
+import 'package:delivery/src/pages/delivery/orders/list/delivery_order_list_page.dart';
+import 'package:delivery/src/pages/restaurant/orders/list/restaurants_orders_list.dart';
+import 'package:delivery/src/pages/roles/roles_page.dart';
 import 'package:flutter/widgets.dart';
 
 //Pages
@@ -18,11 +21,19 @@ final routes = <String, WidgetBuilder>{
   'login': (BuildContext context) => const LoginPage(),
   'forgot-password': (BuildContext context) => const ForgotPassword(),
   'sing-up': (BuildContext context) => const RegisterPage(),
-  'tabs': (BuildContext context) => const TabsPage(),
+  // 'tabs': (BuildContext context) => const TabsPage(),
+  'client/products/list': (BuildContext context) => const TabsPage(),
   'search': (BuildContext context) => const SearchPage(),
   'filter': (BuildContext context) => const FilterPage(),
   'collections': (BuildContext context) => const CollectionsPage(),
   'collections-detail': (BuildContext context) => const CollectionsDetailPage(),
   'place-detail': (BuildContext context) => const PlaceDetailPage(),
   'profile-detail': (BuildContext context) => const ProfileDetailPage(),
+  // Rutas Restaurante  y delivery
+
+  'restaurant/order/list': (BuildContext context) =>
+      const RestaurantOrderListPage(),
+  'delivery/order/list': (BuildContext context) =>
+      const DeliveryOrdersListPage(),
+  'roles': (BuildContext context) => const RolesPage(),
 };

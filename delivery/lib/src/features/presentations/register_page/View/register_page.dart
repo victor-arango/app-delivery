@@ -43,6 +43,9 @@ class _RegisterPage extends State<RegisterPage> {
                   color: MyColors.primaryColorDark,
                   fontSize: 25.0),
               _Username(con: _con),
+              _LastName(
+                con: _con,
+              ),
               _EmailInput(con: _con),
               _PhoneInput(con: _con),
               _PasswordInput(con: _con),
@@ -155,6 +158,31 @@ class _PhoneInput extends StatelessWidget {
         keyboardType: TextInputType.phone,
         decoration: const InputDecoration(
             hintText: 'Telefono',
+            border: OutlineInputBorder(borderSide: BorderSide.none)),
+      ),
+    );
+  }
+}
+
+class _LastName extends StatelessWidget {
+  const _LastName({
+    required RegisterController con,
+  }) : _con = con;
+
+  final RegisterController _con;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 20.0),
+      margin: const EdgeInsets.only(top: 10.0),
+      decoration: BoxDecoration(
+          color: MyColors.gris, borderRadius: BorderRadius.circular(40.0)),
+      child: TextField(
+        controller: _con.lastNameController,
+        keyboardType: TextInputType.text,
+        decoration: const InputDecoration(
+            hintText: 'Apellidos',
             border: OutlineInputBorder(borderSide: BorderSide.none)),
       ),
     );
