@@ -27,9 +27,12 @@ class SharedPref {
     return prefs.remove(key);
   }
 
-  void logout(BuildContext context) {
-    remove('user');
-    Navigator.pushAndRemoveUntil(
-        context, 'welcome' as Route<Object?>, (route) => false);
-  }
+  void logout(BuildContext context)  async{
+    await remove('user');
+    // ignore: use_build_context_synchronously
+    if (!context.mounted) return; // No w
+    Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
+
+  } 
 }
+

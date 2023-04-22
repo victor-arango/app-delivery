@@ -2,6 +2,7 @@ import 'package:delivery/src/features/presentations/custom-widgets/BackButtons/b
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import '../../../../utils/my_colors.dart';
+import '../../../../utils/styles/box_decoration_shadows.dart';
 import '../../custom-widgets/Headers/header_text.dart';
 import '../register_controller.dart';
 
@@ -19,7 +20,7 @@ class _RegisterPage extends State<RegisterPage> {
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      _con.init(context);
+      _con.init(context, refresh);
     });
   }
 
@@ -36,12 +37,15 @@ class _RegisterPage extends State<RegisterPage> {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(30.0),
+          
           child: Column(
             children: [
+              _AvatarUser(con: _con),
               headerText(
                   text: 'Crea una cuenta',
                   color: MyColors.primaryColorDark,
                   fontSize: 25.0),
+               
               _Username(con: _con),
               _LastName(
                 con: _con,
@@ -55,6 +59,64 @@ class _RegisterPage extends State<RegisterPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void refresh(){
+    setState(() {
+      
+    });
+}
+}
+
+class _AvatarUser extends StatelessWidget {
+  const _AvatarUser({
+    super.key,
+    required RegisterController con,
+  }) : _con = con;
+
+  final RegisterController _con;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:  GestureDetector(
+        onTap: _con.showAlertDialog,
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          decoration: createDecorationWithShadows(
+              
+              borderRadius: BorderRadius.circular(65)),
+          width: 142,
+          height: 142,
+          child: CircleAvatar(
+          backgroundImage: _con.imageFile != null 
+            ? FileImage(_con.imageFile!) 
+            : const AssetImage('') as ImageProvider,
+          backgroundColor: MyColors.primaryColorOpacity,
+        ),
+        ),
+        Transform.translate(
+          offset: const Offset(0, -35),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+                color: MyColors.primaryColor,
+                borderRadius: BorderRadius.circular(20)),
+            child: Icon(
+              Icons.camera_alt,
+              color: MyColors.white,
+              size: 20,
+            ),
+          ),
+        )
+      ],
+    ),
+      ),
+
     );
   }
 }
@@ -238,3 +300,5 @@ class _EmailInput extends StatelessWidget {
     );
   }
 }
+
+

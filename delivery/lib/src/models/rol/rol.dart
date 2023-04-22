@@ -7,7 +7,7 @@ String rolToJson(Rol data) => json.encode(data.toJson());
 class Rol {
   String? id;
   String? name;
-  String? image;
+  String? image = '';
   String? route;
 
   Rol({

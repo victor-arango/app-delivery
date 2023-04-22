@@ -3,6 +3,7 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:delivery/src/models/users/user.dart';
 import 'package:delivery/src/provider/users_provider.dart';
+import 'package:delivery/src/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/response/response_api.dart';
@@ -17,12 +18,29 @@ class loginController {
   TextEditingController passwordController = TextEditingController();
 
   UsersProvider usersProvider = UsersProvider();
+  final SharedPref _sharedPref = SharedPref();
 
-  Future? init(BuildContext context) {
+  Future? init(BuildContext context)async {
     this.context = context;
     usersProvider.init(context);
 
-    return null;
+    User user = User.fromJson(await _sharedPref.read('user') ?? {});
+
+    
+
+    if(user.sessionToken != null){
+       if (user.roles!.length > 1) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamedAndRemoveUntil(context, 'roles', (route) => false);
+      } else {
+        ruta = user.roles![0].route!.toString();
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamedAndRemoveUntil(context, ruta!, (route) => false);
+
+      
+      }
+    }
+    
   }
 
   void goToRegisterPage() {
@@ -34,6 +52,8 @@ class loginController {
   }
 
   void login() async {
+
+  
     // Navigator.pushNamed(context!, 'tabs');
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
@@ -59,8 +79,12 @@ class loginController {
 
     ResponseApi? responseApi = await usersProvider.login(email, password);
 
+
+
+
     if (responseApi?.success != null && responseApi?.success == true) {
       User user = User.fromJson(responseApi?.data);
+      _sharedPref.save('user', user.toJson());
 
       if (user.roles!.length > 1) {
         Navigator.pushNamedAndRemoveUntil(context!, 'roles', (route) => false);
@@ -68,7 +92,7 @@ class loginController {
         ruta = user.roles![0].route!.toString();
         Navigator.pushNamedAndRemoveUntil(context!, ruta!, (route) => false);
 
-        print(ruta);
+      
       }
     } else {
       MySnackbarResponseApi.show(
@@ -77,5 +101,12 @@ class loginController {
           contentType: responseApi?.success,
           text: responseApi?.message);
     }
+      
+
+      MySnackbarResponseApi.show(
+          context: context,
+          title: responseApi?.success,
+          contentType: responseApi?.success,
+          text: responseApi?.message);
   }
 }
