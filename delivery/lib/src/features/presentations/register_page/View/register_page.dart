@@ -94,7 +94,7 @@ class _AvatarUser extends StatelessWidget {
           child: CircleAvatar(
           backgroundImage: _con.imageFile != null 
             ? FileImage(_con.imageFile!) 
-            : const AssetImage('') as ImageProvider,
+            : const AssetImage('assets/image/user.png') as ImageProvider,
           backgroundColor: MyColors.primaryColorOpacity,
         ),
         ),
