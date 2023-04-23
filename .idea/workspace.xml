@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25e4fdd8-0f56-4ec2-a826-839cb5798b0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/api/environment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/api/environment.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/custom-widgets/my_snackbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/custom-widgets/my_snackbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/login_page/login_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/login_page/login_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/delivery.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/delivery.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/profile_detail_page/components/avatar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/profile_detail_page/components/avatar_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/View/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/View/register_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/register_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/register_page/register_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/features/presentations/tabs/profile_tab/View/profile_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/features/presentations/tabs/profile_tab/View/profile_tab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/models/response/response_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/models/response/response_api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/models/users/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/models/users/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/lib/src/provider/users_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/provider/users_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/lib/src/routes/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/lib/src/routes/routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +63,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="414" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1681698858001" />
-    <state x="92" y="92" width="1736" height="848" key="AVDManager" timestamp="1681699237930">
+    <state x="92" y="92" width="1736" height="848" key="AVDManager" timestamp="1682208156600">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="92" y="92" width="1736" height="848" key="AVDManager/0.0.1920.1032@0.0.1920.1032" timestamp="1681699237930" />
+    <state x="92" y="92" width="1736" height="848" key="AVDManager/0.0.1920.1032@0.0.1920.1032" timestamp="1682208156600" />
     <state x="740" y="271" key="FileChooserDialogImpl" timestamp="1681698867078">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

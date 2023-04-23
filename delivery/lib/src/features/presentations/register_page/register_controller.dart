@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, body_might_complete_normally_nullable, unused_local_variable
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
@@ -11,7 +12,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../models/response/response_api.dart';
 import '../../../provider/users_provider.dart';
 import '../../../utils/my_colors.dart';
-
 
 class RegisterController {
   BuildContext? context;
@@ -85,6 +85,17 @@ class RegisterController {
       return;
     }
 
+    print('valor de imageFile: $imageFile');
+
+    // if (imageFile != null) {
+    //   MySnackbar.show(
+    //       context: context,
+    //       // title: 'Alerta',
+    //       contentType: ContentType.warning,
+    //       text: 'Debes seleccionar una imagen');
+    //   return;
+    // }
+
     User user = User(
         email: email,
         name: name,
@@ -92,77 +103,87 @@ class RegisterController {
         phone: phone,
         password: password);
 
-    ResponseApi? responseApi = await usersProvider.create(user);
+    Stream? stream = await usersProvider.createWithImage(user, imageFile!);
+    stream?.listen((res) {
+      // ResponseApi? responseApi = await usersProvider.create(user);
+      ResponseApi? responseApi = responseApiFromJson(jsonDecode(res));
+      print('RESPUESTA: ${responseApiToJson(res)}');
+      MySnackbarResponseApi.show(
+          context: context,
+          title: responseApi.success,
+          contentType: responseApi.success,
+          text: responseApi.message);
 
-    MySnackbarResponseApi.show(
-        context: context,
-        title: responseApi?.success,
-        contentType: responseApi?.success,
-        text: responseApi?.message);
-
-    if (responseApi?.success == true) {
-      Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushReplacementNamed(context!, 'login');
-      });
-    } else {}
+      if (responseApi.success == true) {
+        Future.delayed(const Duration(seconds: 3), () {
+          Navigator.pushReplacementNamed(context!, 'login');
+        });
+      } else {
+        MySnackbarResponseApi.show(
+            context: context,
+            title: responseApi.success,
+            contentType: responseApi.success,
+            text: responseApi.message);
+      }
+    });
   }
 
-
-Future selectImage(ImageSource imagesource) async{
-  PickedFile pickedFile = (await ImagePicker().pickImage(source: imagesource)) as PickedFile;
-  // ignore: unnecessary_null_comparison
-  if (pickedFile != null) {
-    imageFile = File(pickedFile.path);
+  Future selectImage(ImageSource imagesource) async {
+    final pickedFile = await ImagePicker().pickImage(source: imagesource);
+    // ignore: unnecessary_null_comparison
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
+    }
+    Navigator.pop(context!);
+    refresh!();
   }
-  Navigator.pop(context!);
-  refresh!();
-}
- 
 
-  void showAlertDialog(){
+  void showAlertDialog() {
     Widget galleryButton = ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor:MyColors.primaryColor),
-      onPressed: (){},  child: const Text('Galeria'));
-    Widget cameraButton = ElevatedButton(onPressed: (){},  child: const Text('camara'));
+        style: ElevatedButton.styleFrom(backgroundColor: MyColors.primaryColor),
+        onPressed: () {
+          selectImage(ImageSource.gallery);
+        },
+        child: const Text('Galeria'));
+    Widget cameraButton = ElevatedButton(
+        onPressed: () {
+          selectImage(ImageSource.camera);
+        },
+        child: const Text('camara'));
 
     AlertDialog alertDialog = AlertDialog(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          content: SizedBox(
-            height: 200,
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 15.0),
-                  child: const  Image(
-                    image: NetworkImage('http://vectips.com/wp-content/uploads/2017/03/project-preview-large-2.png'),
-                    width: 130,
-                    height: 130,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(15.0),
-                  child: headerText(
-                      text: 'Selecciona tu imagen',
-                      color: MyColors.primaryColorDark,
-                      fontSize: 20.0),
-                ),
-              ],
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20.0))),
+      content: SizedBox(
+        height: 200,
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 15.0),
+              child: const Image(
+                image: NetworkImage(
+                    'http://vectips.com/wp-content/uploads/2017/03/project-preview-large-2.png'),
+                width: 130,
+                height: 130,
+              ),
             ),
-          ),
-          actions: [
-            galleryButton,
-            cameraButton
+            Container(
+              margin: const EdgeInsets.all(15.0),
+              child: headerText(
+                  text: 'Selecciona tu imagen',
+                  color: MyColors.primaryColorDark,
+                  fontSize: 20.0),
+            ),
           ],
+        ),
+      ),
+      actions: [galleryButton, cameraButton],
     );
 
-    showDialog(context: context!, 
-    builder: (BuildContext context){
-      return alertDialog;
-    });
-
+    showDialog(
+        context: context!,
+        builder: (BuildContext context) {
+          return alertDialog;
+        });
   }
-
-
-
 }
