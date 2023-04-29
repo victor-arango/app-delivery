@@ -26,8 +26,18 @@ class RestaurantProfileController{
 
 
   void logout(){
-    _sharedPref.logout(context!);
+    _sharedPref.logout(context!, user!.id.toString());
   }
+
+  void goToCategoriesCreate(){
+    Navigator.pushNamed(context!, 'restaurant/order/categories');
+  }
+  void goToProductsCreate(){
+    Navigator.pushNamed(context!, 'restaurant/order/products');
+  }
+
+
+
     void goToRoles(){
     Navigator.pushNamedAndRemoveUntil(context!, 'roles', (route) => false);
   }

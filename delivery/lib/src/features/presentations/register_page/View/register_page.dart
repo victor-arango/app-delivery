@@ -34,39 +34,42 @@ class _RegisterPage extends State<RegisterPage> {
           return backButton(context, Colors.black);
         }),
       ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(30.0),
-          
-          child: Column(
-            children: [
-              _AvatarUser(con: _con),
-              headerText(
-                  text: 'Crea una cuenta',
-                  color: MyColors.primaryColorDark,
-                  fontSize: 25.0),
-               
-              _Username(con: _con),
-              _LastName(
-                con: _con,
+      body: CustomScrollView(
+        slivers: [
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Center(
+              child: Container(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  children: [
+                    _AvatarUser(con: _con),
+                    headerText(
+                        text: 'Crea una cuenta',
+                        color: MyColors.primaryColorDark,
+                        fontSize: 25.0),
+                    _Username(con: _con),
+                    _LastName(
+                      con: _con,
+                    ),
+                    _EmailInput(con: _con),
+                    _PhoneInput(con: _con),
+                    _PasswordInput(con: _con),
+                    _ConfirmPasswordInput(con: _con),
+                    _SingUpButton(con: _con),
+                  ],
+                ),
               ),
-              _EmailInput(con: _con),
-              _PhoneInput(con: _con),
-              _PasswordInput(con: _con),
-              _ConfirmPasswordInput(con: _con),
-              _SingUpButton(con: _con),
-            ],
-          ),
-        ),
+            ),
+          ]))
+        ],
       ),
     );
   }
 
-  void refresh(){
-    setState(() {
-      
-    });
-}
+  void refresh() {
+    setState(() {});
+  }
 }
 
 class _AvatarUser extends StatelessWidget {
@@ -80,43 +83,42 @@ class _AvatarUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:  GestureDetector(
+      child: GestureDetector(
         onTap: _con.showAlertDialog,
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          decoration: createDecorationWithShadows(
-              
-              borderRadius: BorderRadius.circular(65)),
-          width: 142,
-          height: 142,
-          child: CircleAvatar(
-          backgroundImage: _con.imageFile != null 
-            ? FileImage(_con.imageFile!) 
-            : const AssetImage('assets/image/user.png') as ImageProvider,
-          backgroundColor: MyColors.primaryColorOpacity,
-        ),
-        ),
-        Transform.translate(
-          offset: const Offset(0, -35),
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-                color: MyColors.primaryColor,
-                borderRadius: BorderRadius.circular(20)),
-            child: Icon(
-              Icons.camera_alt,
-              color: MyColors.white,
-              size: 20,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              decoration: createDecorationWithShadows(
+                  borderRadius: BorderRadius.circular(65)),
+              width: 142,
+              height: 142,
+              child: CircleAvatar(
+                backgroundImage: _con.imageFile != null
+                    ? FileImage(_con.imageFile!)
+                    : const AssetImage('assets/images/user.png')
+                        as ImageProvider,
+                backgroundColor: MyColors.white,
+              ),
             ),
-          ),
-        )
-      ],
-    ),
+            Transform.translate(
+              offset: const Offset(0, -35),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: MyColors.primaryColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Icon(
+                  Icons.camera_alt,
+                  color: MyColors.white,
+                  size: 20,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
-
     );
   }
 }
@@ -135,7 +137,7 @@ class _SingUpButton extends StatelessWidget {
       height: 45.0,
       margin: const EdgeInsets.only(top: 30.0),
       child: ElevatedButton(
-        onPressed: _con.register,
+        onPressed: _con.isEnable ? _con.register : (){},
         style: ElevatedButton.styleFrom(
             backgroundColor: MyColors.primaryColor,
             shape: RoundedRectangleBorder(
@@ -300,5 +302,3 @@ class _EmailInput extends StatelessWidget {
     );
   }
 }
-
-

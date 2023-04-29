@@ -9,8 +9,8 @@ import '../../../../../models/users/user.dart';
 
 class ProfileController{
   BuildContext? context;
-  final SharedPref _sharedPref = SharedPref();
-  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+   SharedPref _sharedPref = SharedPref();
+  // GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   Function? refresh;
 
   User? user;
@@ -24,7 +24,7 @@ class ProfileController{
 
 
   void logout(){
-    _sharedPref.logout(context!);
+    _sharedPref.logout(context!, user!.id.toString());
   }
 
 }

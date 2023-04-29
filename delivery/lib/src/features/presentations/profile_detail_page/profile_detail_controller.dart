@@ -8,22 +8,21 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/features/presentations/custom-widgets/my_snackbar.dart';
 import 'package:delivery/src/models/users/user.dart';
+import 'package:delivery/src/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 import '../../../models/response/response_api.dart';
 import '../../../provider/users_provider.dart';
 import '../../../utils/my_colors.dart';
 
-class RegisterController {
+class UpdateProfileController {
   BuildContext? context;
 
-  TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
 
   UsersProvider usersProvider = UsersProvider();
 
@@ -32,31 +31,38 @@ class RegisterController {
   Function? refresh;
 
   ProgressDialog? _progressDialog;
-   bool isEnable = true;
+  bool isEnable = true;
+  User? user;
+  SharedPref _sharedPref = SharedPref();
 
 
-  Future? init(BuildContext context, Function refresh) {
+  Future? init(BuildContext context, Function refresh) async{
     this.context = context;
     this.refresh = refresh;
-    usersProvider.init(context, );
     _progressDialog = ProgressDialog(context: context);
+    user = User.fromJson(await _sharedPref.read('user'));
+    // ignore: use_build_context_synchronously
+    usersProvider.init(context, sessionUser: user);
+    
+    nameController.text = user?.name ?? '';
+    lastNameController.text = user?.lastname ?? '';
+    phoneController.text = user?.phone ?? '';
+    
+    
+    refresh();
    
   }
 
-  void register() async {
-    String email = emailController.text.trim();
+  void update() async {
     String name = nameController.text.trim();
     String lastName = lastNameController.text.trim();
     String phone = phoneController.text.trim();
-    String password = passwordController.text.trim();
-    String confirmPassword = confirmPasswordController.text.trim();
 
-    if (email.isEmpty ||
+    if (
         name.isEmpty ||
-        // lastName.isEmpty ||
-        phone.isEmpty ||
-        password.isEmpty ||
-        confirmPassword.isEmpty) {
+        lastName.isEmpty ||
+        phone.isEmpty 
+       ) {
       MySnackbar.show(
           context: context,
           title: 'Alerta',
@@ -65,35 +71,6 @@ class RegisterController {
       return;
     }
 
-    if (confirmPassword != password) {
-      MySnackbar.show(
-          context: context,
-          title: 'Alerta',
-          contentType: ContentType.warning,
-          text: 'Las contraseñas no coinciden');
-      return;
-    }
-
-    if (password.length < 6) {
-      MySnackbar.show(
-          context: context,
-          title: 'Alerta',
-          contentType: ContentType.warning,
-          text: 'La contraseña debee tener al menos 6 caracteres');
-      return;
-    }
-
-    if (RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
-    } else {
-      MySnackbar.show(
-          context: context,
-          title: 'Alerta',
-          contentType: ContentType.warning,
-          text: 'Debes ingresar un correo electronico valido');
-      return;
-    }
-
-    
 
     if (imageFile == null) {
       MySnackbar.show(
@@ -108,31 +85,26 @@ class RegisterController {
     isEnable = false;
 
 
-    User user = User(
-        email: email,
+    User myUser = User(
+        id: user!.id,
         name: name,
-        
         lastname: lastName,
         phone: phone,
-        password: password);
+        image: user!.image
+        );
 
 
 
-  Stream stream = await usersProvider.createWithImage(user, imageFile!);
-  stream.listen((res) { 
-    _progressDialog!.close();
+  Stream stream = await usersProvider.update(myUser, imageFile!);
+  stream.listen((res) async { 
+  _progressDialog!.close();
 
-    ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
-    print('Respuesta: ${responseApi.toJson()}');
-     MySnackbarResponseApi.show(
-          context: context,
-          title: responseApi.success,
-          contentType: responseApi.success,
-          text: responseApi.message);
+    ResponseApi? responseApi = ResponseApi.fromJson(json.decode(res));
+    Fluttertoast.showToast(msg: responseApi.message!);
     if (responseApi.success == true){
-      Future.delayed(const Duration(seconds: 3), (){
-        Navigator.pushReplacementNamed(context!, 'login');
-      });
+      user = await usersProvider.getById(myUser.id!);//Obtienen usuario de base de datos 
+      _sharedPref.save('user', user?.toJson());
+        Navigator.pushNamedAndRemoveUntil(context!, 'client/products/list', (route) => false);
     }else{
       isEnable = true;
     }

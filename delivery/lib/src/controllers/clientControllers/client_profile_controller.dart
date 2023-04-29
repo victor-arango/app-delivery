@@ -25,7 +25,7 @@ class ClientProfileController{
 
 
   void logout(){
-    _sharedPref.logout(context!);
+    _sharedPref.logout(context!,user!.id.toString());
   }
 
   void goToRoles(){

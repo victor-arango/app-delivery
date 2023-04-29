@@ -1,5 +1,7 @@
 import 'package:delivery/src/pages/client/list/tabs/client_products_list_page.dart';
 import 'package:delivery/src/pages/delivery/orders/list/delivery_order_list_page.dart';
+import 'package:delivery/src/pages/restaurant/orders/list/categories/create/restaurant_categories_create_page.dart';
+import 'package:delivery/src/pages/restaurant/orders/list/products/create/restaurant_products_create_page.dart';
 import 'package:delivery/src/pages/restaurant/orders/list/restaurants_orders_list_page.dart';
 
 
@@ -38,7 +40,8 @@ final routes = <String, WidgetBuilder>{
   // 'restaurant/order/list': (BuildContext context) => const TabsPageClient(),
   'client/products/list':(BuildContext context) => const TabsPageClient(),
   'restaurant/order/list':(BuildContext context) => const TabsPageRestaurant(),
-  'delivery/order/list': (BuildContext context) =>
-      const TabsPagedelivery(),
+  'restaurant/order/categories':(BuildContext context) => const RestaurantCategoriesCreatePage(),
+  'restaurant/order/products':(BuildContext context) => const  RestaurantProductsCreatePage(),
+  'delivery/order/list': (BuildContext context) =>const TabsPagedelivery(),
   'roles': (BuildContext context) => const RolesPage(),
 };

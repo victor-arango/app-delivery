@@ -6,7 +6,7 @@ import '../../../../utils/styles/box_decoration_shadows.dart';
 @immutable
 class AvatarView extends StatelessWidget {
   String? backgroundImage;
-   AvatarView({super.key,  this.backgroundImage});
+  AvatarView({super.key, this.backgroundImage});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,12 @@ class AvatarView extends StatelessWidget {
       children: [
         Container(
           decoration: createDecorationWithShadows(
-              
               borderRadius: BorderRadius.circular(65)),
           width: 142,
           height: 142,
-          child: CircleAvatar(backgroundImage: NetworkImage(backgroundImage!),
-          backgroundColor: MyColors.primaryColorOpacity,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(backgroundImage!),
+            backgroundColor: MyColors.primaryColorOpacity,
           ),
         ),
         Transform.translate(

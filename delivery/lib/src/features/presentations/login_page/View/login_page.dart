@@ -29,20 +29,6 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Stack(
               children: [
-                // Container(
-                //     width: double.infinity,
-                //     height: 350.0,
-                //     child: SlideShow(
-                //       slides: <Widget>[
-                //         Image.network(
-                //             'https://images.unsplash.com/photo-1541592391523-5ae8c2c88d10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'),
-                //         Image.network(
-                //             'https://images.unsplash.com/photo-1457460866886-40ef8d4b42a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'),
-                //         Image.network(
-                //             'https://images.unsplash.com/photo-1561758033-7e924f619b47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'),
-                //       ],
-                //     )),
-
                 const Image(
                     width: double.infinity,
                     height: 350.0,

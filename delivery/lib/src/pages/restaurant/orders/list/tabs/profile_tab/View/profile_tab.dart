@@ -41,6 +41,8 @@ class _ProfileTabRestaurantState extends State<ProfileTabRestaurant> {
          (_con.user?.roles?.length ?? 0) > 1
           ? _RolesTile(con: _con)
           : Container() : Container(),
+          _CreateCategoriesTile(con: _con),
+          _CreateProductsTile(con: _con),
           _LogoutButton(con: _con),
         ],
       ),
@@ -86,6 +88,72 @@ class _RolesTile extends StatelessWidget {
     );
   }
 }
+class _CreateCategoriesTile extends StatelessWidget {
+  const _CreateCategoriesTile({
+    super.key,
+    required RestaurantProfileController con,
+  }) : _con = con;
+
+  final RestaurantProfileController _con;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 10),
+      child: ListTile(
+    
+    onTap: _con.goToCategoriesCreate,    
+       
+        leading: const Image(
+          
+          image:  AssetImage('assets/images/categories.png'),
+          width: 29,
+          height: 29,
+        ),
+        title: headerText(text: 'Crear Categoria', fontWeight: FontWeight.w400),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: MyColors.gris,
+        )),
+    );
+  }
+}
+
+
+class _CreateProductsTile extends StatelessWidget {
+  const _CreateProductsTile({
+    super.key,
+    required RestaurantProfileController con,
+  }) : _con = con;
+
+  final RestaurantProfileController _con;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 10),
+      child: ListTile(
+    
+    onTap: _con.goToProductsCreate,    
+       
+        leading: const Image(
+          
+          image:  AssetImage('assets/images/categories.png'),
+          width: 29,
+          height: 29,
+        ),
+        title: headerText(text: 'Crear Productos', fontWeight: FontWeight.w400),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: MyColors.gris,
+        )),
+    );
+  }
+}
+
+
+
+
 
 class _Header extends StatelessWidget {
   const _Header({
