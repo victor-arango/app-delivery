@@ -112,14 +112,7 @@ Widget favouriteCard({
                             fontSize: 13.0),
                       ],
                     ),
-                    // Container(
-                    //     margin: const EdgeInsets.symmetric(horizontal: 0.0),
-                    //     width: 110.0,
-                    //     height: 25.0,
-                    //     child: createButton(
-                    //         buttonColor: MyColors.primaryColor,
-                    //         labelButton: buttonText,
-                    //         labelFontSize: 11.0))
+            
                   ],
                 )
               ],

@@ -60,7 +60,6 @@ void refresh(){
 
 class _RolesTile extends StatelessWidget {
   const _RolesTile({
-    super.key,
     required RestaurantProfileController con,
   }) : _con = con;
 
@@ -90,7 +89,6 @@ class _RolesTile extends StatelessWidget {
 }
 class _CreateCategoriesTile extends StatelessWidget {
   const _CreateCategoriesTile({
-    super.key,
     required RestaurantProfileController con,
   }) : _con = con;
 
@@ -122,7 +120,6 @@ class _CreateCategoriesTile extends StatelessWidget {
 
 class _CreateProductsTile extends StatelessWidget {
   const _CreateProductsTile({
-    super.key,
     required RestaurantProfileController con,
   }) : _con = con;
 

@@ -1,293 +1,265 @@
+
+
+import 'package:delivery/src/controllers/deliveryControllers/delivery_profile_controller.dart';
+import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/features/presentations/custom-widgets/no_data_widget/no_data_widget.dart';
+import 'package:delivery/src/models/order/order.dart';
+import 'package:delivery/src/utils/extensions/screen_size.dart';
+import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
-// import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
+import 'package:flutter/scheduler.dart';
 
-// import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-
-// import '../../../../../../../features/presentations/custom-widgets/Cards/populares_card.dart';
-// import '../../../../../../../features/presentations/custom-widgets/Headers/header_text.dart';
-// import '../../../../../../../utils/my_colors.dart';
-
-
-class ExploreTabDelivery extends StatelessWidget {
+class ExploreTabDelivery extends StatefulWidget {
   const ExploreTabDelivery({super.key});
 
   @override
+  State<ExploreTabDelivery> createState() => _ExploreTabDeliveryState();
+}
+
+class _ExploreTabDeliveryState extends State<ExploreTabDelivery> {
+   final DeliveryProfileController _con = DeliveryProfileController();
+  
+
+  @override
+  void initState() {
+    super.initState();
+
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      _con.init(context, refresh);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Explore delivery'),
+        return DefaultTabController(length: _con.status.length,
+         child:
+
+         Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(120),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: MyColors.white,
+            elevation: 0.0,
+            title: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(  
+                children: [
+                  InkWell(
+                    onTap: () {
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (_) => const ProfileTabClient(),
+                      //   ),
+                      // );
+                    },
+                    child: 
+                    CircleAvatar(
+                      radius: 23,
+                      backgroundColor: Colors.red,
+                      backgroundImage: Image.network(
+                        _con.user?.image ?? 'assets/images/user.png',
+                        errorBuilder: (_, __, ___) {
+                          return Image.asset('assets/images/user.png');
+                        },
+                      ).image,
+                    ),
+                  ),
+                
+                  
+                ],
+              ),
+            ),
+            actions: [
+              InkWell(
+                onTap: () {
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (_) => const MyOrderTabClient(),
+                      //   ),
+                      // );
+                    },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 17.0, horizontal: 10),
+                  child: Stack(
+                    children: <Widget>[
+                      const Icon(
+                        Icons.shopping_bag_outlined,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                      Positioned(
+                        top: 5,
+                        right: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.transparent,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                offset: const Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                spreadRadius: 0.0,
+                              ),
+                            ],
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(0.5),
+                            child: CircleAvatar(
+                              radius: 5,
+                              backgroundColor: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+            bottom: TabBar(
+              unselectedLabelColor: Colors.grey[400],
+              indicator: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: MyColors.primaryColor,
+                    width: 2.0, // Ancho de la línea inferior
+                  ),
+                ),
+              ),
+              labelColor: Colors.black,
+              isScrollable: true,
+              tabs: List<Widget>.generate(_con.status.length, (index) {
+                return Tab(
+                  child: Text(_con.status[index] ),
+                );
+              }),
+            ),
+          ),
+        ),
+        body:
+        TabBarView(
+          children: _con.status.map((String status) {
+            // return CardOrder(con: _con);           
+            return FutureBuilder(
+              future: _con.getOrders(status),
+              builder: (context, AsyncSnapshot<List<Order>> snapshot){
+               
+
+                if(snapshot.hasData){
+                  if((snapshot.data?.length)! > 0){
+                    return ListView.builder(
+                padding:const  EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                itemCount: snapshot.data?.length ?? 0,
+                itemBuilder:(_, index){
+                  return CardOrder(con: _con, order: snapshot.data![index],);
+                }
+                
+                );
+
+                  }else{
+                    return NoDataWidget(text: 'lo sentimos, no encontramos ordenes pendientes.\n ');
+                  }
+                }else{
+                    return NoDataWidget(text: 'lo sentimos, no encontramos ordenes pendientes.\n ');
+
+                }
+              
+            }
+            
+            );
+          }).toList(),
+        ),
+         )
     );
 
-}
-  //   return SafeArea(
-  //       child: CustomScrollView(
-  //     slivers: [
-  //       SliverList(
-  //           delegate: SliverChildListDelegate([
-  //         Container(
-  //           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-  //           child: Column(
-  //             children: [
-  //               _topBar(context),
-  //               Container(
-  //                 margin: const EdgeInsets.symmetric(vertical: 20.0),
-  //                 alignment: Alignment.centerLeft,
-  //                 child: headerText(
-  //                     text: 'Descrube nuevos lugares',
-  //                     color: MyColors.primaryColorDark,
-  //                     fontSize: 30.0),
-  //               ),
-  //               _sliderCards(),
-  //               Container(
-  //                   margin: const EdgeInsets.symmetric(vertical: 15.0),
-  //                   child:
-  //                       _headers(context, 'Populares esta semana', 'Ver más')),
-  //               popularesCard(
-  //                   context: context,
-  //                   title: 'Rokutto',
-  //                   subtitle: 'Santander',
-  //                   review: '4.5',
-  //                   ratings: '100 valoraciones',
-  //                   buttonText: 'Domicilios',
-  //                   hasActionButton: true,
-  //                   image: const NetworkImage(
-  //                       'https://images.unsplash.com/photo-1598679253544-2c97992403ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')),
-  //               popularesCard(
-  //                   context: context,
-  //                   title: 'Rokutto',
-  //                   subtitle: 'Santander',
-  //                   review: '4.5',
-  //                   ratings: '100 valoraciones',
-  //                   buttonText: 'Domicilios',
-  //                   hasActionButton: true,
-  //                   image: const NetworkImage(
-  //                       'https://images.unsplash.com/photo-1598679253544-2c97992403ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')),
-  //               popularesCard(
-  //                   context: context,
-  //                   title: 'Comidas Rapidas Rokutto',
-  //                   subtitle: 'Santander',
-  //                   review: '4.5',
-  //                   ratings: '100 valoraciones',
-  //                   buttonText: 'Domicilios',
-  //                   hasActionButton: true,
-  //                   image: const NetworkImage(
-  //                       'https://images.unsplash.com/photo-1598679253544-2c97992403ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')),
-  //               Container(
-  //                   margin: const EdgeInsets.symmetric(vertical: 15.0),
-  //                   child: GestureDetector(
-  //                       onTap: () {
-  //                         Navigator.pushNamed(context, 'collections');
-  //                       },
-  //                       child: _headers(context, 'Restaurantes', 'Ver más'))),
-  //               _sliderCollections()
-  //             ],
-  //           ),
-  //         )
-  //       ]))
-  //     ],
-  //   ));
-  // }
+
+
+  }
+       void refresh() {
+    setState(() {});
+  }
+
 }
 
-// Widget _topBar(BuildContext context) {
-//   return Row(
-//     children: [
-//       GestureDetector(
-//         onTap: () => Navigator.pushNamed(context, 'search'),
-//         child: Container(
-//             width: 400.0,
-//             padding: const EdgeInsets.all(10.0),
-//             margin: const EdgeInsets.only(left: 16.0),
-//             decoration: BoxDecoration(
-//                 border:
-//                     Border.all(color: const Color.fromRGBO(234, 236, 239, 1.0)),
-//                 borderRadius: BorderRadius.circular(20.0)),
-//             child: Row(
-//               children: [
-//                 Icon(Icons.search, size: 20.0, color: MyColors.gris),
-//                 Container(
-//                   margin: const EdgeInsets.only(left: 5.0),
-//                   child: Text(
-//                     'Buscar',
-//                     style: TextStyle(color: MyColors.gris, fontSize: 17.0),
-//                   ),
-//                 ),
-//               ],
-//             )),
-//       ),
-//       Container(
-//           width: 40.0,
-//           height: 40.0,
-//           margin: const EdgeInsets.only(left: 15.0),
-//           decoration: BoxDecoration(
-//               color: const Color.fromRGBO(209, 209, 214, 1.0),
-//               borderRadius: BorderRadius.circular(30)),
-//           child: IconButton(
-//             icon: const Icon(
-//               Icons.filter_list,
-//               size: 25,
-//               color: Colors.white,
-//             ),
-//             onPressed: () {
-//               Navigator.pushNamed(context, 'filter');
-//             },
-//           ))
-//     ],
-//   );
-// }
 
-// Widget _sliderCards() {
-//   return SizedBox(
-//     height: 350.0,
-//     child: Swiper(
-//       itemCount: 4,
-//       layout: SwiperLayout.DEFAULT,
-//       itemBuilder: (BuildContext context, int index) {
-//         return ListView.builder(
-//             scrollDirection: Axis.horizontal,
-//             itemBuilder: (BuildContext context, int index) {
-//               return _target(context);
-//             });
-//       },
-//     ),
-//   );
-// }
+class CardOrder extends StatelessWidget {
+     const CardOrder({super.key, 
+    required DeliveryProfileController con, 
+    required this.order,
+    
+  }) : _con = con;
+  final Order order;
+  final DeliveryProfileController _con;
 
-// Widget _target(BuildContext context) {
-//   return GestureDetector(
-//     onTap: () {
-//       Navigator.pushNamed(context, 'place-detail');
-//     },
-//     child: Container(
-//       margin: const EdgeInsets.all(10.0),
-//       child: Column(
-//         children: [
-//           ClipRRect(
-//             borderRadius: BorderRadius.circular(20),
-//             child: const Image(
-//                 width: 250.0,
-//                 height: 250.0,
-//                 fit: BoxFit.cover,
-//                 image: NetworkImage(
-//                     'https://images.unsplash.com/photo-1606131731446-5568d87113aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')),
-//           ),
-//           Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Container(
-//                 margin: const EdgeInsets.only(top: 10.0),
-//                 child: const Text(
-//                   "Comidas rapidas Rayber",
-//                   style: TextStyle(
-//                       color: Colors.black,
-//                       fontWeight: FontWeight.bold,
-//                       fontSize: 17.0),
-//                 ),
-//               ),
-//               Container(
-//                 alignment: Alignment.centerLeft,
-//                 child: Text(
-//                   "Barrio Paris",
-//                   style: TextStyle(
-//                       color: MyColors.gris,
-//                       fontWeight: FontWeight.w500,
-//                       fontSize: 13.0),
-//                 ),
-//               ),
-//               Row(
-//                 children: [
-//                   const Icon(
-//                     Icons.star,
-//                     color: Colors.yellow,
-//                     size: 16,
-//                   ),
-//                   const Text("4.8",
-//                       style: TextStyle(
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.w500,
-//                           fontSize: 13.0)),
-//                   Text("(233 calificaciones)",
-//                       style: TextStyle(
-//                           color: MyColors.gris,
-//                           fontWeight: FontWeight.w500,
-//                           fontSize: 13.0)),
-//                   Container(
-//                       margin: const EdgeInsets.symmetric(horizontal: 5.0),
-//                       width: 80.0,
-//                       height: 18.0,
-//                       child: createButton(
-//                         context: context,
-//                           buttonColor: MyColors.primaryColor,
-//                           labelButton: 'Domicilio',
-//                           labelFontSize: 11.0))
-//                 ],
-//               )
-//             ],
-//           )
-//         ],
-//       ),
-//     ),
-//   );
-// }
 
-// Widget _headers(BuildContext context, String textHeader, String textAction) {
-//   return Row(
-//     children: [
-//       Container(
-//           alignment: Alignment.centerLeft,
-//           child: headerText(
-//               text: textHeader, color: Colors.black, fontSize: 20.0)),
-//       const Spacer(),
-//       GestureDetector(
-//         child: Row(
-//           children: [
-//             Text(
-//               textAction,
-//               style: const TextStyle(
-//                   color: Colors.black,
-//                   fontWeight: FontWeight.w600,
-//                   fontSize: 15.0),
-//             ),
-//             const Icon(Icons.play_arrow)
-//           ],
-//         ),
-//       ),
-//     ],
-//   );
-// }
+ @override
+  Widget build(BuildContext context) {
+  
+  return GestureDetector(
+    onTap: (){
+      _con.openBottomSheet(order);
+    },
+    child: Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+               height: screenHeight.getScreenHeight(
+                      context: context, multiplier: 0.22),
+                      child: Card(
+                        elevation: 3.0,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                         
+                            
+                            child: Container(
+                              height: 30,
+                              width: screenHeight.getScreenHeight(
+                      context: context, multiplier: 1),
+                              decoration: BoxDecoration(
+                                color: MyColors.primaryColor,
+                                borderRadius:const BorderRadius.only(
+                                  topLeft: Radius.circular(15),
+                                  topRight: Radius.circular(15)
+                                ),
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: headerText(text: 'Orden # ${order.id}', fontSize: 16, color: MyColors.white, fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin:const EdgeInsets.symmetric(vertical: 40,horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 5),
+                                  child: headerText(text: 'Pedido: 2023-05-20',fontWeight: FontWeight.w500),
+                                ),
+                                Container(
+                                   margin: const EdgeInsets.symmetric(vertical: 2),
+                                  child: headerText(text: 'Cliente: ${order.client?.name ?? ''} ${order.client?.lastname ?? ''}',fontWeight: FontWeight.w500),
+                                ),
+                                Container(
+                                   margin: const EdgeInsets.symmetric(vertical: 5),
+                                  child: headerText(text: 'Dirección Domicilio: ${order.address?.address ?? ''}',fontWeight: FontWeight.w500, maxLines: 2),
+                                )
+                              ],
+                            ),
+                          ),
+                          ],
+                          
+                        ),
+                      ),
+    ),
+  );
+}
 
-// Widget _sliderCollections() {
-//   return SizedBox(
-//     height: 200.0,
-//     child: Swiper(
-//       itemCount: 4,
-//       layout: SwiperLayout.DEFAULT,
-//       itemBuilder: (BuildContext context, int index) {
-//         return ListView.builder(
-//             scrollDirection: Axis.horizontal,
-//             itemBuilder: (BuildContext context, int index) {
-//               return _targetCollections(context);
-//             });
-//       },
-//     ),
-//   );
-// }
-
-// Widget _targetCollections(BuildContext context) {
-//   return Container(
-//     margin: const EdgeInsets.all(10.0),
-//     child: Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         ClipRRect(
-//           borderRadius: BorderRadius.circular(20.0),
-//           child: const Image(
-//               width: 300,
-//               height: 150,
-//               fit: BoxFit.cover,
-//               image: NetworkImage(
-//                   'https://images.unsplash.com/photo-1626203050468-9308df7964fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=881&q=80')),
-//         ),
-//       ],
-//     ),
-//   );
-// }
+}

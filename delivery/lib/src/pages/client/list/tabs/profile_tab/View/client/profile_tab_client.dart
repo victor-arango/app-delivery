@@ -1,5 +1,4 @@
 
-import 'package:delivery/src/models/rol/rol.dart';
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -77,7 +76,6 @@ void refresh(){
 
 class _RolesTile extends StatelessWidget {
   const _RolesTile({
-    super.key,
     required ClientProfileController con,
   }) : _con = con;
 

@@ -31,11 +31,13 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: headerText(
-                  text: '¡QUE DISFRUTES TU COMIDA!',
+                  text: '¡QUE DISFRUTES  TU COMIDA!',
                   color: Colors.white,
-                  fontSize: 45.0),
+                  fontSize: 25.0,
+                  textOverflow: TextOverflow.fade
+                  )
             ),
             Container(
               padding:

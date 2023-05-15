@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields, body_might_complete_normally_nullable, avoid_print
+// ignore_for_file: prefer_final_fields, body_might_complete_normally_nullable, avoid_print, unnecessary_null_comparison
 
 import 'dart:async';
 import 'dart:convert';
@@ -56,6 +56,31 @@ Future<User?> getById(String id) async{
   }
 }
 
+Future<List<User?>> getDeliveryMen() async{
+  try{
+     Uri url = Uri.http(_url, '$_api/findByDeliveryMen');
+      Map<String, String> headers = {
+        'Content-type': 'application/json',
+        'Authorization': sessionUser!.sessionToken.toString()
+      };
+      final res = await http.get(url, headers: headers);
+      if(res.statusCode == 401){ //No autorizado
+      Fluttertoast.showToast(msg: 'La sesion Expiro');
+      SharedPref().logout(context!, sessionUser!.id.toString());
+      return [];
+      }
+      final data = json.decode(res.body);
+      User user = User.fromJsonList(data);
+     
+      return user.toList;
+
+  }
+  catch(e){
+    print('Error: $e');
+    return [];
+  }
+}
+
 
 Future<Stream> createWithImage(User user, File image) async{
 
@@ -90,7 +115,7 @@ Future<Stream> createWithImage(User user, File image) async{
 
   catch(e){
     print('Error: $e');
-    return Stream.empty();
+    return const Stream.empty();
   }
 
 
@@ -119,14 +144,14 @@ Future<Stream> update(User user, File image) async{
     Fluttertoast.showToast(msg: 'La sesion Expiro');
     print('Entro al condicional');
     SharedPref().logout(context!, sessionUser!.id.toString());
-     return Stream.empty();
+     return const Stream.empty();
   }
   return response.stream.transform(utf8.decoder);
   }
 
   catch(e){
     print('Error: $e');
-    return Stream.empty();
+    return const Stream.empty();
   }
 
 

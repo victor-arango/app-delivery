@@ -32,6 +32,7 @@ class RestaurantCategoriController{
     user = User.fromJson(await _sharedPref.read('user'));
     // ignore: use_build_context_synchronously
     _categoriesProvider.init(context, sessionUser: user );
+    refresh();
    
 
   }

@@ -12,4 +12,6 @@ class MyColors {
   static Color negro = const Color.fromARGB(255, 0, 0, 0);
   static Color bkgBanner = const Color.fromRGBO(226, 208, 182, 1.0);
   static Color white = const Color.fromARGB(255, 255, 255, 255);
+  static Color bkClient = const  Color.fromARGB(255, 237, 237, 237);
+ 
 }

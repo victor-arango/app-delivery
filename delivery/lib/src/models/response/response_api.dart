@@ -20,6 +20,7 @@ class ResponseApi {
     try {
       data = json["data"];
     } catch (e) {
+      // ignore: avoid_print
       print('Exception data $e');
     }
   }

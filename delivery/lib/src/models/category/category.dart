@@ -9,6 +9,7 @@ class Category {
     String? id;
     String? name;
     String? description;
+    List<Category> toList = [];
 
     Category({
         this.id,
@@ -17,10 +18,21 @@ class Category {
     });
 
     factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"],
+        id: json["id"] is int ? json['id'].toString() : json['id'],
         name: json["name"],
         description: json["description"],
     );
+
+
+    Category.fromJsonList(List<dynamic>JsonList){
+      // ignore: unnecessary_null_comparison
+      if (JsonList == null) return;
+      // ignore: avoid_function_literals_in_foreach_calls
+      JsonList.forEach((item) {
+        Category category = Category.fromJson(item);
+        toList.add(category);
+       });
+    }
 
     Map<String, dynamic> toJson() => {
         "id": id,

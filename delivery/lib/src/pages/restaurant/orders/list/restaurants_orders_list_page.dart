@@ -1,11 +1,12 @@
+
 import 'package:delivery/src/pages/delivery/orders/list/tabs/my_order_tab/View/my_order_tab.dart';
-import 'package:delivery/src/pages/restaurant/orders/list/tabs/explore_tab/View/explore_tab_delivery.dart';
-import 'package:delivery/src/pages/restaurant/orders/list/tabs/favourite_tab/View/favourite_tab_delivery.dart';
 import 'package:delivery/src/pages/restaurant/orders/list/tabs/profile_tab/View/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
 import '../../../../utils/my_colors.dart';
+import 'tabs/explore_tab/View/explore_tab_restaurant.dart';
+import 'tabs/favourite_tab/View/favourite_tab_restaurant.dart';
 class TabsPageRestaurant extends StatefulWidget {
   const TabsPageRestaurant({Key? key}) : super(key: key);
   @override

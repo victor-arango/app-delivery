@@ -5,6 +5,8 @@ import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
+import 'tabs/my_order_tab/View/my_order_tab.dart';
+
 
 
 
@@ -26,7 +28,7 @@ class _TabsPagedeliveryState extends State<TabsPagedelivery> {
 
   final List<Widget> _widgetOptions = [
     const ExploreTabDelivery(),
-    const EmptyOrderViewDelivery(),
+    const MyOrderTabDelivery(),
     // const FavouriteTab(),
     const ProfileTabDelivery()
   ];
@@ -44,7 +46,7 @@ class _TabsPagedeliveryState extends State<TabsPagedelivery> {
             Icons.explore,
             Icons.assessment,
             Icons.book,
-            Icons.person_pin
+           
           ],
           tabSize: 50,
           tabBarHeight: 55,

@@ -5,14 +5,24 @@ Widget headerText(
     Color color = Colors.black,
     FontWeight fontWeight = FontWeight.bold,
     double? fontSize,
-    TextAlign? textAlign}) {
+    TextAlign? textAlign,
+    dynamic  maxLines = 1,
+    dynamic textOverflow = TextOverflow.visible 
+    
+    }) {
   return Text(
     text,
     textAlign: textAlign,
+    maxLines: maxLines,
+    overflow: textOverflow,
     style: TextStyle(
       color: color,
       fontWeight: fontWeight,
       fontSize: fontSize,
+      
+      
     ),
+
+  
   );
 }

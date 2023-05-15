@@ -74,7 +74,6 @@ class _RegisterPage extends State<RegisterPage> {
 
 class _AvatarUser extends StatelessWidget {
   const _AvatarUser({
-    super.key,
     required RegisterController con,
   }) : _con = con;
 
@@ -82,42 +81,40 @@ class _AvatarUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GestureDetector(
-        onTap: _con.showAlertDialog,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              decoration: createDecorationWithShadows(
-                  borderRadius: BorderRadius.circular(65)),
-              width: 142,
-              height: 142,
-              child: CircleAvatar(
-                backgroundImage: _con.imageFile != null
-                    ? FileImage(_con.imageFile!)
-                    : const AssetImage('assets/images/user.png')
-                        as ImageProvider,
-                backgroundColor: MyColors.white,
+    return GestureDetector(
+      onTap: _con.showAlertDialog,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            decoration: createDecorationWithShadows(
+                borderRadius: BorderRadius.circular(65)),
+            width: 142,
+            height: 142,
+            child: CircleAvatar(
+              backgroundImage: _con.imageFile != null
+                  ? FileImage(_con.imageFile!)
+                  : const AssetImage('assets/images/user.png')
+                      as ImageProvider,
+              backgroundColor: MyColors.white,
+            ),
+          ),
+          Transform.translate(
+            offset: const Offset(0, -35),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: MyColors.primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+              child: Icon(
+                Icons.camera_alt,
+                color: MyColors.white,
+                size: 20,
               ),
             ),
-            Transform.translate(
-              offset: const Offset(0, -35),
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: MyColors.primaryColor,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Icon(
-                  Icons.camera_alt,
-                  color: MyColors.white,
-                  size: 20,
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

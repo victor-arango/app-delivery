@@ -7,6 +7,7 @@ import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
+import '../../address/list/order_tab_client.dart';
 import 'explore_tab/View/explore_tab_client.dart';
 
 
@@ -24,14 +25,14 @@ class _TabsPageClientState extends State<TabsPageClient> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      _getLocation(context);
-    });
+    // Future.delayed(Duration.zero, () {
+    //   _getLocation(context);
+    // });
   }
 
   final List<Widget> _widgetOptions = [
     const ExploreTabClient(),
-    const MyOrderTabClient(),
+    const OrderProductTabClient(),
     const FavouriteTabClient(),
     const ProfileTabClient()
   ];
@@ -71,7 +72,13 @@ class _TabsPageClientState extends State<TabsPageClient> {
           },
         ),
         body: _widgetOptions.elementAt(_selectItemIndex));
+
+
   }
+   void refresh() {
+    setState(() {});
+  }
+
 
   Future _getLocation(BuildContext context) async {
     await showAlertDialog(

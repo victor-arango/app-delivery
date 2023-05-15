@@ -18,6 +18,7 @@ class User {
   String? sessionToken;
   String? image;
   List<Rol>? roles = [];
+  List<User> toList = [];
 
   User(
       {this.id,
@@ -46,6 +47,16 @@ class User {
                 .toList(),
       );
 
+           User.fromJsonList(List<dynamic>JsonList){
+      // ignore: unnecessary_null_comparison
+      if (JsonList == null) return;
+      // ignore: avoid_function_literals_in_foreach_calls
+      JsonList.forEach((item) {
+        User user = User.fromJson(item);
+        toList.add(user);
+       });
+    }
+
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
@@ -57,4 +68,6 @@ class User {
         "image": image,
         "roles": roles,
       };
+
+  map(Function(dynamic client) param0) {}
 }

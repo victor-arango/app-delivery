@@ -33,7 +33,7 @@ class UpdateProfileController {
   ProgressDialog? _progressDialog;
   bool isEnable = true;
   User? user;
-  SharedPref _sharedPref = SharedPref();
+  final SharedPref _sharedPref = SharedPref();
 
 
   Future? init(BuildContext context, Function refresh) async{

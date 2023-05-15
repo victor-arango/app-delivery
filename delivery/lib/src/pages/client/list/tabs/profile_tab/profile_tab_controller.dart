@@ -9,7 +9,7 @@ import '../../../../../models/users/user.dart';
 
 class ProfileController{
   BuildContext? context;
-   SharedPref _sharedPref = SharedPref();
+   final SharedPref _sharedPref = SharedPref();
   // GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   Function? refresh;
 
