@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../../../../../controllers/clientControllers/client_profile_controller.dart';
-import '../../../../../../../features/presentations/custom-widgets/Headers/header_text.dart';
+import '../../../../../../custom-widgets/Headers/header_text.dart';
 import '../../../../../../../utils/extensions/screen_size.dart';
 
 
@@ -161,8 +161,8 @@ Widget build(BuildContext context) {
               ),
               Container(
                 width:  screenHeight.getScreenHeight(
-                      context: context, multiplier: 0.17),
-                margin: const EdgeInsets.only(left: 20.0),
+                      context: context, multiplier: 0.20),
+                margin: const EdgeInsets.only(left: 10.0),
                 height: 25,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -183,7 +183,7 @@ Widget build(BuildContext context) {
                           child: headerText(
                               text: 'Comprador Frecuente',
                               color: MyColors.white,
-                              fontSize: 11),
+                              fontSize: 10),
                         )
                       ],
                     )),

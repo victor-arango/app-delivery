@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../features/presentations/custom-widgets/Cards/favourite_card.dart';
-import '../../../../../../features/presentations/custom-widgets/Headers/header_text.dart';
+import '../../../../../custom-widgets/Cards/favourite_card.dart';
+import '../../../../../custom-widgets/Headers/header_text.dart';
 import '../../../../../../utils/my_colors.dart';
 
 class FavouriteTabClient extends StatefulWidget {

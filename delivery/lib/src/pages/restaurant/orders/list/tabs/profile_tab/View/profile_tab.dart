@@ -5,7 +5,7 @@ import 'package:flutter/scheduler.dart';
 
 
 import '../../../../../../../controllers/restaurantsControllers/restaurantProfileController.dart';
-import '../../../../../../../features/presentations/custom-widgets/Headers/header_text.dart';
+import '../../../../../../custom-widgets/Headers/header_text.dart';
 import '../../../../../../../utils/extensions/screen_size.dart';
 
 
@@ -207,35 +207,7 @@ Widget build(BuildContext context) {
                   ],
                 ),
               ),
-              Container(
-                width:  screenHeight.getScreenHeight(
-                      context: context, multiplier: 0.17),
-                margin: const EdgeInsets.only(left: 20.0),
-                height: 25,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0.5,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                        backgroundColor: MyColors.primaryColor),
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        const Image(
-                          image: AssetImage('assets/images/crown.png'),
-                          width: 16,
-                          height: 16,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 5),
-                          child: headerText(
-                              text: 'Comprador Frecuente',
-                              color: MyColors.white,
-                              fontSize: 11),
-                        )
-                      ],
-                    )),
-              )
+              
             ],
           )
         ],

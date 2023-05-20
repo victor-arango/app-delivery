@@ -1,6 +1,6 @@
 import 'package:delivery/src/controllers/restaurantsControllers/categories/restaurant_categories_create_controller.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/BackButtons/back_button.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/pages/custom-widgets/BackButtons/back_button.dart';
+import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 

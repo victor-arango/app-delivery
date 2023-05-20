@@ -1,6 +1,6 @@
 import 'package:delivery/src/controllers/clientControllers/client_products_list_controller.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/no_data_widget/no_data_widget.dart';
+import 'package:delivery/src/pages/custom-widgets/Buttons/rounded_button.dart';
+import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
 import 'package:delivery/src/models/category/category.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/pages/client/list/tabs/my_order_tab/View/my_order_tab_client.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-import '../../../../../../features/presentations/custom-widgets/Headers/header_text.dart';
+import '../../../../../custom-widgets/Headers/header_text.dart';
 import '../../../../../../utils/my_colors.dart';
 
 class ExploreTabClient extends StatefulWidget {

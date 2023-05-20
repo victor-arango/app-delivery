@@ -1,7 +1,7 @@
 
 import 'package:delivery/src/controllers/clientControllers/client_address_list_controller.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/no_data_widget/no_data_widget.dart';
+import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
 import 'package:delivery/src/models/address/address.dart';
 import 'package:delivery/src/pages/client/list/tabs/profile_tab/View/client/profile_tab_client.dart';
 import 'package:delivery/src/utils/extensions/screen_size.dart';

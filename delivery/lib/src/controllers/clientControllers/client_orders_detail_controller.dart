@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import, use_build_context_synchronously
 
-import 'package:delivery/src/features/presentations/custom-widgets/my_snackbar.dart';
+import 'package:delivery/src/pages/custom-widgets/my_snackbar.dart';
 import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/models/response/response_api.dart';

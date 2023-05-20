@@ -7,6 +7,7 @@ import 'package:delivery/src/pages/client/address/map/client_address_map_page.da
 import 'package:delivery/src/pages/client/list/tabs/client_products_list_page.dart';
 import 'package:delivery/src/pages/delivery/orders/list/delivery_order_list_page.dart';
 import 'package:delivery/src/pages/delivery/orders/map/delivery_orders_map_page.dart';
+import 'package:delivery/src/pages/global/register_page.dart';
 import 'package:delivery/src/pages/restaurant/orders/list/categories/create/restaurant_categories_create_page.dart';
 import 'package:delivery/src/pages/restaurant/orders/list/products/create/restaurant_products_create_page.dart';
 import 'package:delivery/src/pages/restaurant/orders/list/restaurants_orders_list_page.dart';
@@ -16,17 +17,9 @@ import 'package:delivery/src/pages/roles/roles_page.dart';
 import 'package:flutter/widgets.dart';
 
 //Pages
-import 'package:delivery/src/features/presentations/welcome_page/View/welcome_page.dart';
-import 'package:delivery/src/features/presentations/login_page/View/login_page.dart';
-import 'package:delivery/src/features/presentations/forgot_password_page/View/forgot_password_page.dart';
-import 'package:delivery/src/features/presentations/register_page/View/register_page.dart';
-
-import 'package:delivery/src/features/presentations/collections_page/View/collections_page.dart';
-import 'package:delivery/src/features/presentations/search_page/View/search_view.dart';
-import '../features/presentations/collections_detail_page/View/collection_detail_page.dart';
-import '../features/presentations/filter_page/View/filter_page.dart';
-import '../features/presentations/place_detail_page/View/place_detail_page.dart';
-import '../features/presentations/profile_detail_page/View/profile_detail_page.dart';
+import 'package:delivery/src/pages/global/welcome_page.dart';
+import 'package:delivery/src/pages/global/login_page.dart';
+import '../pages/global/profile_detail_page.dart';
 import '../models/address/address.dart';
 import '../models/users/user.dart';
 import '../pages/client/address/map/client_orders_map_page.dart';
@@ -69,14 +62,9 @@ class DeliveryOrdersMapPageArguments {
 final Map<String, WidgetBuilder> routes = {
   'welcome': (BuildContext context) => const WelcomePage(),
   'login': (BuildContext context) => const LoginPage(),
-  'forgot-password': (BuildContext context) => const ForgotPassword(),
-  'sing-up': (BuildContext context) => const RegisterPage(),
+  'sing-up': (BuildContext context) => const RegisterPage (),
 
-  'search': (BuildContext context) => const SearchPage(),
-  'filter': (BuildContext context) => const FilterPage(),
-  'collections': (BuildContext context) => const CollectionsPage(),
-  'collections-detail': (BuildContext context) => const CollectionsDetailPage(),
-  'place-detail': (BuildContext context) => const PlaceDetailPage(),
+  
   'profile-detail': (BuildContext context) => const ProfileDetailPage(),
   // Rutas Restaurante  y delivery
 

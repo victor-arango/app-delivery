@@ -2,9 +2,9 @@
 
 import 'package:delivery/src/controllers/clientControllers/client_orders_create_controller.dart';
 import 'package:delivery/src/controllers/restaurantsControllers/restaurant_orders_detail_controller.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Buttons/rounded_button.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/no_data_widget/no_data_widget.dart';
+import 'package:delivery/src/pages/custom-widgets/Buttons/rounded_button.dart';
+import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
 import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/models/users/user.dart';

@@ -1,5 +1,5 @@
 import 'package:delivery/src/controllers/clientControllers/client_products_detail_controller.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/utils/extensions/screen_size.dart';
 import 'package:delivery/src/utils/my_colors.dart';
@@ -35,10 +35,11 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
         child: Column(
           children: [
             SizedBox(
+              
               height: screenHeight.getScreenHeight(
-                  context: context, multiplier: 0.15),
+                  context: context, multiplier: 0.10),
               child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -46,8 +47,8 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                     Container(
                       alignment: Alignment.center,
                       height: 40,
-                      decoration: ShapeDecoration(
-                        shape: const CircleBorder(),
+                      decoration: const ShapeDecoration(
+                        shape:  CircleBorder(),
                       ),
                       child: IconButton(
                         onPressed: () {
@@ -67,6 +68,7 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                   context: context, multiplier: 0.42),
               width: double.infinity,
               child: Container(
+                
                 width: double.infinity,
                 height: screenHeight.getScreenHeight(
                     context: context, multiplier: 0.42),
@@ -272,7 +274,7 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                                     )
                                   ],
                                 ),
-                                const SizedBox(height: 100),
+                                const SizedBox(height: 40),
                                 ElevatedButton(
                                   onPressed:_con.addToBag,
                                   style: ElevatedButton.styleFrom(

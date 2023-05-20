@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/Headers/header_text.dart';
-import 'package:delivery/src/features/presentations/custom-widgets/my_snackbar.dart';
+import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
+import 'package:delivery/src/pages/custom-widgets/my_snackbar.dart';
 import 'package:delivery/src/models/category/category.dart';
 import 'package:delivery/src/models/product/product.dart';
 

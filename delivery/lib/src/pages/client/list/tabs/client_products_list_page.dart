@@ -1,4 +1,4 @@
-import 'package:delivery/src/features/presentations/custom-widgets/Alerts/alert_dialog.dart';
+import 'package:delivery/src/pages/custom-widgets/Alerts/alert_dialog.dart';
 import 'package:delivery/src/pages/client/list/tabs/favourite_tab/View/favourite_tab_client.dart';
 import 'package:delivery/src/pages/client/list/tabs/my_order_tab/View/my_order_tab_client.dart';
 import 'package:delivery/src/pages/client/list/tabs/profile_tab/View/client/profile_tab_client.dart';
