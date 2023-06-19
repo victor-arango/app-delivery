@@ -1,13 +1,9 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'dart:convert';
-
 import '../rol/rol.dart';
-
 User userFromJson(String str) => User.fromJson(json.decode(str));
-
 String userToJson(User data) => json.encode(data.toJson());
-
 class User {
   String? id;
   String? name;
@@ -19,7 +15,6 @@ class User {
   String? image;
   List<Rol>? roles = [];
   List<User> toList = [];
-
   User(
       {this.id,
       this.name,
@@ -30,7 +25,6 @@ class User {
       this.sessionToken,
       this.image,
       this.roles});
-
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"] is int ? json['id'].toString() : json['id'],
         name: json["name"],
@@ -46,7 +40,6 @@ class User {
                 .map((model) => Rol.fromJson(model))
                 .toList(),
       );
-
            User.fromJsonList(List<dynamic>JsonList){
       // ignore: unnecessary_null_comparison
       if (JsonList == null) return;
@@ -56,7 +49,6 @@ class User {
         toList.add(user);
        });
     }
-
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
@@ -68,6 +60,5 @@ class User {
         "image": image,
         "roles": roles,
       };
-
   map(Function(dynamic client) param0) {}
 }

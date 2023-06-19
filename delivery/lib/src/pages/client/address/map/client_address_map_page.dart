@@ -47,7 +47,7 @@ class _ClientAddressMapPageState extends State<ClientAddressMapPage> {
                           ),
                         );
                       },
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 23,
                         backgroundColor: Colors.red,
                         // backgroundImage: Image.network(

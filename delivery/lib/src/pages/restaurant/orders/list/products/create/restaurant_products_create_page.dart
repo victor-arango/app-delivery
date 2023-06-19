@@ -2,8 +2,6 @@
 // ignore_for_file: avoid_print, avoid_function_literals_in_foreach_calls
 
 import 'dart:io';
-
-
 import 'package:delivery/src/controllers/restaurantsControllers/products/restaurant_products_create_controller.dart';
 import 'package:delivery/src/pages/custom-widgets/BackButtons/back_button.dart';
 import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
@@ -16,28 +14,19 @@ import '../../../../../../utils/my_colors.dart';
 
 class RestaurantProductsCreatePage extends StatefulWidget {
   const RestaurantProductsCreatePage({super.key});
-
   @override
   State<RestaurantProductsCreatePage> createState() => _RestaurantProductsCreatePageState();
 }
-
 class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreatePage> {
-
     final RestaurantProductController _con = RestaurantProductController();
-
-
-
   @override
   void initState() {
     super.initState();
-    
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
      _con.init(context, refresh);
     });
   }
-
     String? _selectedCategory;
-
   void _onCategorySelected(String? value) {
     print('Categoría seleccionada: $value');
     setState(() {
@@ -45,10 +34,6 @@ class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreateP
       _con.idCategory = value!;
     });
   }
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +61,6 @@ class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreateP
               );
             },
             child: CircleAvatar(
-              
               radius: 20,
               backgroundImage: Image.network(
                 _con.user?.image ?? 'assets/images/user.png',
@@ -86,7 +70,6 @@ class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreateP
               ).image,
             ),
           ),
-          
         ],
       ),
     )
@@ -127,7 +110,6 @@ class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreateP
                           onChanged: _onCategorySelected,
                           value: _selectedCategory,
                       ),
-                  
                   ],
                 ),
               ),
@@ -142,19 +124,15 @@ class _RestaurantProductsCreatePageState extends State<RestaurantProductsCreateP
     setState(() {});
   }
 }
-
 class _CardImage extends StatelessWidget {
   const _CardImage({
-    
     required RestaurantProductController con,
     required this.imageFile,
     required this.numberFile,
-
   }) : _con = con;
   final  imageFile;
   final int numberFile;
   final RestaurantProductController _con;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -179,7 +157,6 @@ class _CardImage extends StatelessWidget {
                   Column(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      
       Text(
     'Agregar Imagen',
     style: TextStyle(fontSize: 17.0, color: Colors.grey[600]),
@@ -192,7 +169,6 @@ class _CardImage extends StatelessWidget {
                   ),
                    Row(
       children: <Widget>[
-        
               SizedBox(
                   height: 100,
                   width: 100,
@@ -204,9 +180,7 @@ class _CardImage extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10)),
                               child: Image.file(
-                                
                                 imageFile,
-                                
                               )
                         ),
                       ),
@@ -239,7 +213,6 @@ class _CardImage extends StatelessWidget {
                   Column(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      
       Text(
     'Agregar Imagen',
     style: TextStyle(fontSize: 17.0, color: Colors.grey[600]),
@@ -270,7 +243,6 @@ class _CardImage extends StatelessWidget {
                     ],
                   ),
                 ),
-  
                 ],
               ),
                  ],
@@ -282,17 +254,11 @@ class _CardImage extends StatelessWidget {
   }
 }
 
-
-
-
-
 class _NameProduct extends StatelessWidget {
   const _NameProduct({
     required RestaurantProductController con,
   }) : _con = con;
-
   final RestaurantProductController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -313,23 +279,16 @@ class _NameProduct extends StatelessWidget {
   }
 }
 
-
-
 class _DescriptionProduct extends StatelessWidget {
   const _DescriptionProduct({
     required RestaurantProductController con,
   }) : _con = con;
-
   final RestaurantProductController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
              margin: const EdgeInsets.only(top: 25),
-
-   
       padding: const EdgeInsets.symmetric(horizontal:10),
-  
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: MyColors.divider)),
       ),
@@ -343,9 +302,7 @@ class _DescriptionProduct extends StatelessWidget {
               contentPadding:  EdgeInsets.all(15),
               hintText: 'Descripcion del producto',
               border: OutlineInputBorder(borderSide: BorderSide.none)),
-              
         ),
-        
       ));
   }
 }
@@ -354,16 +311,12 @@ class _PriceProduct extends StatelessWidget {
   const _PriceProduct({
     required RestaurantProductController con,
   }) : _con = con;
-
   final RestaurantProductController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
              margin: const EdgeInsets.only(top: 10),
-
       padding: const EdgeInsets.symmetric(horizontal:10),
-  
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: MyColors.divider)),
       ),
@@ -386,9 +339,7 @@ class _CreateButton extends StatelessWidget {
   const _CreateButton({
     required RestaurantProductController con,
   }) : _con = con;
-
   final RestaurantProductController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -413,9 +364,6 @@ class _CreateButton extends StatelessWidget {
   }
 }
 
-
-
-
 class _DropDownCategory extends StatelessWidget {
   const _DropDownCategory({
     required this.categories,
@@ -423,12 +371,10 @@ class _DropDownCategory extends StatelessWidget {
     required this.onChanged,
     this.value,
   });
-
   final List<Category> categories;
   final RestaurantProductController con;
   final void Function(String?) onChanged;
   final String? value;
-
   List<DropdownMenuItem<String>> _dropDownItems(List<Category> categories) {
     List<DropdownMenuItem<String>> list = [];
     categories.forEach((category) {
@@ -439,7 +385,6 @@ class _DropDownCategory extends StatelessWidget {
     });
     return list;
   }
-
   @override
   Widget build(BuildContext context) {
     return Material(

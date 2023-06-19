@@ -1,14 +1,11 @@
 // ignore_for_file: prefer_final_fields, body_might_complete_normally_nullable, avoid_print
 import 'dart:convert';
-
 import 'package:delivery/src/api/environment.dart';
-import 'package:delivery/src/models/address/address.dart';
 import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/models/response/response_api.dart';
 import 'package:delivery/src/models/users/user.dart';
 import 'package:delivery/src/utils/shared_pref.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -16,15 +13,12 @@ import 'package:flutter/material.dart';
 class OrdersProvider {
   String _url = Environment.API_DELIVERY;
   String _api = '/api/orders';
-
   BuildContext? context;
   User? sessionUser;
-
   Future<void> init(BuildContext context, {User? sessionUser}) async {
     this.context = context;
     this.sessionUser = sessionUser;
   }
-
   Future<List<Order>> getBystatus(String status) async {
     try {
       Uri url = Uri.http(_url, '$_api/findBystatus/$status');
@@ -39,9 +33,7 @@ class OrdersProvider {
         SharedPref().logout(context!, sessionUser!.id.toString());
         return [];
       }
-
       final data = jsonDecode(res.body);
-
       List<Order> orders = Order.fromJsonList(data);
       return orders;
     } catch (e) {
@@ -63,9 +55,7 @@ class OrdersProvider {
         SharedPref().logout(context!, sessionUser!.id.toString());
         return [];
       }
-
       final data = jsonDecode(res.body);
-
       List<Order> orders = Order.fromJsonList(data);
       return orders;
     } catch (e) {
@@ -87,13 +77,9 @@ class OrdersProvider {
         SharedPref().logout(context!, sessionUser!.id.toString());
         return [];
       }
-
       final data = jsonDecode(res.body);
-
       List<Order> orders = Order.fromJsonList(data);
-  
-      return orders;
-      
+      return orders; 
     } catch (e) {
       print('Error $e');
       return [];

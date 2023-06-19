@@ -53,7 +53,7 @@ class RegisterController {
 
     if (email.isEmpty ||
         name.isEmpty ||
-        // lastName.isEmpty ||
+        lastName.isEmpty ||
         phone.isEmpty ||
         password.isEmpty ||
         confirmPassword.isEmpty) {
@@ -93,8 +93,6 @@ class RegisterController {
       return;
     }
 
-    
-
     if (imageFile == null) {
       MySnackbar.show(
           context: context,
@@ -107,21 +105,16 @@ class RegisterController {
     _progressDialog!.show(max: 100, msg: 'Cargando Imagen...');
     isEnable = false;
 
-
     User user = User(
         email: email,
         name: name,
-        
         lastname: lastName,
         phone: phone,
         password: password);
 
-
-
   Stream stream = await usersProvider.createWithImage(user, imageFile!);
   stream.listen((res) { 
     _progressDialog!.close();
-
     ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
     print('Respuesta: ${responseApi.toJson()}');
      MySnackbarResponseApi.show(
@@ -136,8 +129,6 @@ class RegisterController {
     }else{
       isEnable = true;
     }
-
-
   });
 
   }

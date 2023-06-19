@@ -6,17 +6,14 @@ import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/utils/extensions/screen_size.dart';
-
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-
 import '../../profile_tab/View/client/profile_tab_client.dart';
-import 'components/empty_order_view.dart';
+
 
 class MyOrderTabClient extends StatefulWidget {
   const MyOrderTabClient({super.key});
-
   @override
   State<MyOrderTabClient> createState() => _MyOrderTabClientState();
 }
@@ -25,13 +22,11 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
   ClientOrderCreateController _con = ClientOrderCreateController();
   @override
   void initState() {
-
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context, refresh);
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,13 +94,11 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
               SizedBox( 
                height: screenHeight.getScreenHeight(
                 context: context, multiplier: 0.30),
-              
             child:    
             Padding(
             padding: const EdgeInsets.only(top: 20, left: 30, right: 40),
             child: Column(
               children: [
-               
                 Container(
                   width: screenHeight.getScreenHeight(
                 context: context, multiplier: 1),
@@ -140,10 +133,8 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
                       ),
                     ],
                   )
-                  
                 ),
                 const Spacer(),
-                
                     //button order
           GestureDetector(
             onTap: _con.goToAddress,
@@ -172,19 +163,16 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
           ),
               ],
             ),
-        
           )
             )
           : SizedBox( 
                height: screenHeight.getScreenHeight(
                 context: context, multiplier: 0.30),
-              
             child:    
             Padding(
             padding: const EdgeInsets.only(top: 20, left: 30, right: 40),
             child: Column(
               children: [
-               
                 Container(
                   width: screenHeight.getScreenHeight(
                 context: context, multiplier: 1),
@@ -222,8 +210,6 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
                   
                 ),
                 const Spacer(),
-                
-                    //button order
           GestureDetector(
             onTap: _con.goToAddress,
             child: Padding(
@@ -251,7 +237,6 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
           ),
               ],
             ),
-        
           )
             ),
         body: _con.selectedProducts.isNotEmpty
@@ -262,9 +247,7 @@ class _MyOrderTabClientState extends State<MyOrderTabClient> {
               )
             : EmptyWidget(
                 text: 'No tienes productos agregados',
-              ));
-
-            
+              ));             
   }
 
   void refresh() {

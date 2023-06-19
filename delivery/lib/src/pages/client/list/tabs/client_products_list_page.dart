@@ -1,26 +1,16 @@
-import 'package:delivery/src/pages/custom-widgets/Alerts/alert_dialog.dart';
 import 'package:delivery/src/pages/client/list/tabs/favourite_tab/View/favourite_tab_client.dart';
-import 'package:delivery/src/pages/client/list/tabs/my_order_tab/View/my_order_tab_client.dart';
 import 'package:delivery/src/pages/client/list/tabs/profile_tab/View/client/profile_tab_client.dart';
-
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
-
 import '../../address/list/order_tab_client.dart';
 import 'explore_tab/View/explore_tab_client.dart';
-
-
-
-
-
 
 class TabsPageClient extends StatefulWidget {
   const TabsPageClient({Key? key}) : super(key: key);
   @override
   State<TabsPageClient> createState() => _TabsPageClientState();
 }
-
 class _TabsPageClientState extends State<TabsPageClient> {
   @override
   void initState() {
@@ -29,20 +19,16 @@ class _TabsPageClientState extends State<TabsPageClient> {
     //   _getLocation(context);
     // });
   }
-
   final List<Widget> _widgetOptions = [
     const ExploreTabClient(),
     const OrderProductTabClient(),
     const FavouriteTabClient(),
     const ProfileTabClient()
   ];
-
   int _selectItemIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         bottomNavigationBar: MotionTabBar(
           initialSelectedTab: "Explorar",
           labels: const ["Explorar", "Mi orden", "Favorito", "Perfil"],
@@ -72,23 +58,11 @@ class _TabsPageClientState extends State<TabsPageClient> {
           },
         ),
         body: _widgetOptions.elementAt(_selectItemIndex));
-
-
   }
    void refresh() {
     setState(() {});
   }
-
-
-  Future _getLocation(BuildContext context) async {
-    await showAlertDialog(
-        context,
-        const AssetImage('assets/images/location.png'),
-        'Habilitar ubicación',
-        'permita usar su ubicación para mostrar el restaurante cercano en el mapa.',
-        doneButton(context, "Confirmar"));
-  }
-
+  
   Widget doneButton(BuildContext context, String labelButton) {
     return Container(
       width: double.infinity,

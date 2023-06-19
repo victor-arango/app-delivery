@@ -1,15 +1,9 @@
 import 'package:delivery/src/pages/delivery/orders/list/tabs/explore_tab/View/explore_tab_delivery.dart';
-import 'package:delivery/src/pages/delivery/orders/list/tabs/my_order_tab/View/components/empty_order_view.dart';
 import 'package:delivery/src/pages/delivery/orders/list/tabs/profile_tab/View/profile_tab.dart';
 import 'package:delivery/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
-
 import 'tabs/my_order_tab/View/my_order_tab.dart';
-
-
-
-
 
 class TabsPagedelivery extends StatefulWidget {
   const TabsPagedelivery({Key? key}) : super(key: key);
@@ -25,20 +19,16 @@ class _TabsPagedeliveryState extends State<TabsPagedelivery> {
       // _getLocation(context);
     });
   }
-
   final List<Widget> _widgetOptions = [
     const ExploreTabDelivery(),
     const MyOrderTabDelivery(),
     // const FavouriteTab(),
     const ProfileTabDelivery()
   ];
-
   int _selectItemIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         bottomNavigationBar: MotionTabBar(
           initialSelectedTab: "Explorar",
           labels: const ["Explorar", "Mi orden",  "Perfil"],

@@ -1,10 +1,11 @@
-import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/pages/client/address/list/client_address_list_page.dart';
 import 'package:delivery/src/pages/client/address/list/create/client_address_create_page.dart';
 import 'package:delivery/src/pages/client/address/list/order_tab_client.dart';
 import 'package:delivery/src/pages/client/address/map/client_address_map_page.dart';
+import 'package:delivery/src/pages/client/installments/client_payments_installments_page.dart';
 import 'package:delivery/src/pages/client/list/tabs/client_products_list_page.dart';
+import 'package:delivery/src/pages/client/payments/client_payments_create_page.dart';
 import 'package:delivery/src/pages/delivery/orders/list/delivery_order_list_page.dart';
 import 'package:delivery/src/pages/delivery/orders/map/delivery_orders_map_page.dart';
 import 'package:delivery/src/pages/global/register_page.dart';
@@ -58,6 +59,19 @@ class DeliveryOrdersMapPageArguments {
 }
 
 
+class Arguments{
+ final String? cardToken; 
+
+
+  Arguments({
+    required this.cardToken
+  });
+
+
+  get argument => null;
+}
+
+
 
 final Map<String, WidgetBuilder> routes = {
   'welcome': (BuildContext context) => const WelcomePage(),
@@ -68,8 +82,7 @@ final Map<String, WidgetBuilder> routes = {
   'profile-detail': (BuildContext context) => const ProfileDetailPage(),
   // Rutas Restaurante  y delivery
 
-  // 'client/products/list': (BuildContext context) => const TabsPageClient(),
-  // 'restaurant/order/list': (BuildContext context) => const TabsPageClient(),
+
   'client/products/list':(BuildContext context) => const TabsPageClient(),
   'client/order/create': (BuildContext context) => const MyOrderTabClient(),
   'client/address/list': (BuildContext context) => const ClientAddressListPage(),
@@ -77,8 +90,14 @@ final Map<String, WidgetBuilder> routes = {
   'client/address/map': (BuildContext context) => const ClientAddressMapPage(),
   'client/orders/list': (BuildContext context) => const OrderProductTabClient(),
   'client/orders/map': (BuildContext context) => const ClientOrdersMapPage(),
-
-
+  'client/payments/create': (BuildContext context) => const ClientPaymentsCreatePage(),
+  // 'client/payments/installments': (BuildContext context) => const ClientPaymentsInstallmentsCreatePage(),
+'client/payments/installments': (BuildContext context) {
+  final Arguments arguments = ModalRoute.of(context)?.settings.arguments as Arguments;
+  return ClientPaymentsInstallmentsCreatePage(
+    cardToken: arguments.cardToken,
+  );
+},
 
   'restaurant/order/list':(BuildContext context) => const TabsPageRestaurant(),
   'restaurant/order/categories':(BuildContext context) => const RestaurantCategoriesCreatePage(),

@@ -25,6 +25,7 @@ class ClientProfileController{
 
 
   void logout(){
+  
     _sharedPref.logout(context!,user!.id.toString());
   }
 

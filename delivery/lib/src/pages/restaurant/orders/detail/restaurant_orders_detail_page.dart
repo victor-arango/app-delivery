@@ -113,7 +113,7 @@ class _RestaurantOrdersDetailPageState
                 _con.order!.products!.isNotEmpty
             ? SizedBox(
                 height: screenHeight.getScreenHeight(
-                    context: context, multiplier: 0.50),
+                    context: context, multiplier: 0.55),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10, left: 20, right: 30),
                   child: Column(

@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+
 import 'package:delivery/src/models/address/address.dart';
 import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/models/product/product.dart';
@@ -59,8 +60,9 @@ class ClientAddressListcontroller{
     ResponseApi? responseApi = await _ordersProvider.create(order);
   
     if(responseApi != null &&  responseApi.success == true){
-      Fluttertoast.showToast(msg: 'Se creo correctamente la orden');
-
+      // Fluttertoast.showToast(msg: 'Se creo correctamente la orden');
+      // _sharedPref.remove('order');
+     await Navigator.pushNamedAndRemoveUntil(context!, 'client/payments/create', (route) => false);
     }
   }
 

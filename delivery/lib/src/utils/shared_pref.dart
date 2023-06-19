@@ -30,11 +30,10 @@ class SharedPref {
 
   void logout(BuildContext context, String idUser)  async{
     UsersProvider usersProvider = UsersProvider();
+    await remove('user');
     usersProvider.init(context);
     // ignore: avoid_print
-    print(idUser);
     await usersProvider.logoutSesion(idUser);
-    await remove('user');
     // ignore: use_build_context_synchronously
     Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
   } 

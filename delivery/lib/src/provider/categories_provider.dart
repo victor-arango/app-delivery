@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_final_fields, body_might_complete_normally_nullable, avoid_print
 import 'dart:convert';
-
 import 'package:delivery/src/api/environment.dart';
 import 'package:delivery/src/models/category/category.dart';
 import 'package:delivery/src/models/response/response_api.dart';
@@ -10,20 +9,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-
-
 class CategoriesProvider{
 
   String _url = Environment.API_DELIVERY;
   String _api = '/api/categories';
-
   BuildContext? context;
   User? sessionUser;
-
     Future? init(BuildContext context, {User? sessionUser}) {
     this.context = context;
     this.sessionUser = sessionUser;
-
   }
 
   Future<List<Category>> getAll()async{
@@ -39,12 +33,9 @@ class CategoriesProvider{
       SharedPref().logout(context!, sessionUser!.id.toString());
       return [];
       }
-
       final data = jsonDecode(res.body);
       Category category = Category.fromJsonList(data);
       return category.toList;
-
-
     }catch(e){
       print('Error $e');
       return [];
@@ -75,9 +66,4 @@ class CategoriesProvider{
       return null;
     }
   }
-
-
-
-
-
 }

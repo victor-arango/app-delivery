@@ -29,6 +29,7 @@ class _RolesPageState extends State<RolesPage> {
   Widget build(BuildContext context) {
      return Scaffold(
       appBar: AppBar(
+        backgroundColor: MyColors.primaryColor,
         title: const Text('Selecciona un rol'),
       ),
       body: Container(
@@ -53,7 +54,7 @@ class _RolesPageState extends State<RolesPage> {
       child: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 120,
             child: FadeInImage(
             image: rol.image != null
                 ? NetworkImage(rol.image.toString()) as ImageProvider

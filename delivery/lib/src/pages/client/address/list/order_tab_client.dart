@@ -1,5 +1,3 @@
-
-
 import 'package:delivery/src/controllers/clientControllers/client_order_product_controller.dart';
 import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
 import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
@@ -11,29 +9,23 @@ import 'package:flutter/scheduler.dart';
 
 class OrderProductTabClient extends StatefulWidget {
   const OrderProductTabClient({super.key});
-
   @override
   State<OrderProductTabClient> createState() => _OrderProductTabClientState();
 }
 
 class _OrderProductTabClientState extends State<OrderProductTabClient> {
    final ClientOrderProducController _con = ClientOrderProducController();
-  
-
   @override
   void initState() {
     super.initState();
-
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context, refresh);
     });
   }
-
   @override
   Widget build(BuildContext context) {
         return DefaultTabController(length: _con.status.length,
          child:
-
          Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(120),
@@ -46,13 +38,6 @@ class _OrderProductTabClientState extends State<OrderProductTabClient> {
               child: Row(  
                 children: [
                   InkWell(
-                    onTap: () {
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (_) => const ProfileTabClient(),
-                      //   ),
-                      // );
-                    },
                     child: 
                     CircleAvatar(
                       radius: 23,
@@ -64,21 +49,12 @@ class _OrderProductTabClientState extends State<OrderProductTabClient> {
                         },
                       ).image,
                     ),
-                  ),
-                
-                  
+                  ), 
                 ],
               ),
             ),
             actions: [
-              InkWell(
-                onTap: () {
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (_) => const MyOrderTabClient(),
-                      //   ),
-                      // );
-                    },
+              InkWell(            
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 17.0, horizontal: 10),
@@ -149,8 +125,6 @@ class _OrderProductTabClientState extends State<OrderProductTabClient> {
             return FutureBuilder(
               future: _con.getOrders(status),
               builder: (context, AsyncSnapshot<List<Order>> snapshot){
-               
-
                 if(snapshot.hasData){
                   if((snapshot.data?.length)! > 0){
                     return ListView.builder(
@@ -159,48 +133,33 @@ class _OrderProductTabClientState extends State<OrderProductTabClient> {
                 itemBuilder:(_, index){
                   return CardOrder(con: _con, order: snapshot.data![index],);
                 }
-                
                 );
-
                   }else{
                     return NoDataWidget(text: 'lo sentimos , no encontramos ordenes pendientes.\n ');
                   }
                 }else{
                     return NoDataWidget(text: 'lo sentimos, no encontramos ordenes pendientes.\n ');
-
                 }
-              
-            }
-            
+            }           
             );
           }).toList(),
         ),
          )
     );
-
-
-
   }
        void refresh() {
     setState(() {});
   }
-
 }
-
-
 class CardOrder extends StatelessWidget {
      const CardOrder({super.key, 
     required ClientOrderProducController con, 
-    required this.order,
-    
+    required this.order,  
   }) : _con = con;
   final Order order;
   final ClientOrderProducController _con;
-
-
  @override
   Widget build(BuildContext context) {
-  
   return GestureDetector(
     onTap: (){
       _con.openBottomSheet(order);
@@ -215,8 +174,6 @@ class CardOrder extends StatelessWidget {
                         child: Stack(
                           children: [
                             Positioned(
-                         
-                            
                             child: Container(
                               height: 30,
                               width: screenHeight.getScreenHeight(

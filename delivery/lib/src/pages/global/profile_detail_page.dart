@@ -8,33 +8,20 @@ import 'package:flutter/scheduler.dart';
 
 import '../../utils/styles/box_decoration_shadows.dart';
 
-
 class ProfileDetailPage extends StatefulWidget {
   const ProfileDetailPage({super.key});
-
   @override
   State<ProfileDetailPage> createState() => _ProfileDetailPageState();
 }
-
 class _ProfileDetailPageState extends State<ProfileDetailPage> {
-  
-
-    final UpdateProfileController _con = UpdateProfileController();
-
+  final UpdateProfileController _con = UpdateProfileController();
   @override
   void initState() {
- 
     super.initState();
-
-
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context, refresh);
     });
   }
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +74,6 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
                     Transform.translate(
                       offset: const Offset(0, -60),
                         child: CircleAvatar(
-            
                   backgroundImage: _con.imageFile != null
                       ? FileImage(_con.imageFile!)
                       : (_con.user?.image) != null ? NetworkImage(_con.user!.image!) : 
@@ -99,8 +85,7 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
                     ),
                     _Username(con: _con),
                     _LastName(con: _con), 
-                   _PhoneInput(con: _con)
-                    
+                   _PhoneInput(con: _con)                 
                   ],
                 ),
               ),
@@ -110,25 +95,16 @@ class _ProfileDetailPageState extends State<ProfileDetailPage> {
       ),
     );
   }
-
     void refresh() {
     setState(() {});
   }
 }
 
-
-
-
-
-
-
 class _Username extends StatelessWidget {
   const _Username({
     required UpdateProfileController con,
   }) : _con = con;
-
   final UpdateProfileController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -148,15 +124,11 @@ class _Username extends StatelessWidget {
   }
 }
 
-
-
 class _LastName extends StatelessWidget {
   const _LastName({
     required UpdateProfileController con,
   }) : _con = con;
-
   final UpdateProfileController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -177,18 +149,11 @@ class _LastName extends StatelessWidget {
   }
 }
 
-
-
-
-
-
 class _PhoneInput extends StatelessWidget {
   const _PhoneInput({
     required UpdateProfileController con,
   }) : _con = con;
-
   final UpdateProfileController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(

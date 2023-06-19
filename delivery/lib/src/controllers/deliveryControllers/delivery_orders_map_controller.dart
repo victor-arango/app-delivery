@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, prefer_void_to_null, unused_local_variable, avoid_print, use_build_context_synchronously
-
 import 'dart:async';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:delivery/src/api/environment.dart';

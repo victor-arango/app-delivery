@@ -3,32 +3,23 @@ import 'package:delivery/src/pages/custom-widgets/BackButtons/back_button.dart';
 import 'package:delivery/src/pages/custom-widgets/Headers/header_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-
 import '../../../../../../utils/extensions/screen_size.dart';
 import '../../../../../../utils/my_colors.dart';
 
 class RestaurantCategoriesCreatePage extends StatefulWidget {
   const RestaurantCategoriesCreatePage({super.key});
-
   @override
   State<RestaurantCategoriesCreatePage> createState() => _RestaurantCategoriesCreatePageState();
 }
-
 class _RestaurantCategoriesCreatePageState extends State<RestaurantCategoriesCreatePage> {
-
     final RestaurantCategoriController _con = RestaurantCategoriController();
-
-
   @override
   void initState() {
     super.initState();
-
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
      _con.init(context, refresh);
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,36 +64,27 @@ class _RestaurantCategoriesCreatePageState extends State<RestaurantCategoriesCre
                 child: Column(
                   children: [
                     _NameCategory(con: _con),
-                    _DescriptionCategory(con: _con),
-                    
+                    _DescriptionCategory(con: _con),                    
                   ],
                 ),
               ),
             ),
           ]))
-      ],
-        
+      ],       
       ),
       bottomNavigationBar: _CreateButton(con: _con),
     );
-
   }
    void refresh() {
     setState(() {});
   }
 }
 
-
-
-
-
 class _NameCategory extends StatelessWidget {
   const _NameCategory({
     required RestaurantCategoriController con,
   }) : _con = con;
-
   final RestaurantCategoriController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -123,22 +105,16 @@ class _NameCategory extends StatelessWidget {
   }
 }
 
-
-
 class _DescriptionCategory extends StatelessWidget {
   const _DescriptionCategory({
     required RestaurantCategoriController con,
   }) : _con = con;
-
   final RestaurantCategoriController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(
              margin: const EdgeInsets.only(top: 25),
-
       padding: const EdgeInsets.all(10),
-  
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: MyColors.divider)),
       ),
@@ -161,9 +137,7 @@ class _CreateButton extends StatelessWidget {
   const _CreateButton({
     required RestaurantCategoriController con,
   }) : _con = con;
-
   final RestaurantCategoriController _con;
-
   @override
   Widget build(BuildContext context) {
     return Container(

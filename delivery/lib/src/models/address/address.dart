@@ -1,10 +1,10 @@
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 Address addressFromJson(String str) => Address.fromJson(json.decode(str));
-
 String addressToJson(Address data) => json.encode(data.toJson());
-
 class Address {
     String? id;
     String? idUser;
@@ -13,7 +13,6 @@ class Address {
     double? lat;
     double? lng;
     List<Address> toList = [];
-
     Address({
          this.id,
          this.idUser,
@@ -22,7 +21,6 @@ class Address {
          this.lat,
          this.lng,
     });
-
     factory Address.fromJson(Map<String, dynamic> json) => Address(
         id: json["id"] is int ? json['id'].toString()  : json['id'],
         idUser: json["id_user"],
@@ -31,8 +29,6 @@ class Address {
         lat: json["lat"] is String ? double.parse(json['lat']) : json['lat'],
         lng: json["lng"] is String ? double.parse(json['lng']) : json['lng'],
     );
-
-    
     Address.fromJsonList(List<dynamic>JsonList){
       // ignore: unnecessary_null_comparison
       if (JsonList == null) return;
@@ -42,7 +38,6 @@ class Address {
         toList.add(address);
        });
     }
-
     Map<String, dynamic> toJson() => {
         "id": id,
         "id_user": idUser,

@@ -1,4 +1,6 @@
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 Category categoryFromJson(String str) => Category.fromJson(json.decode(str));

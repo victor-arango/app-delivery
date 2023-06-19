@@ -1,8 +1,5 @@
-// ignore: file_names
 
-
-
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, file_names
 
 import 'package:delivery/src/models/order/order.dart';
 import 'package:delivery/src/pages/restaurant/orders/detail/restaurant_orders_detail_page.dart';

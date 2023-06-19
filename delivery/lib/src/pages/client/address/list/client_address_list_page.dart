@@ -114,7 +114,7 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
                     borderRadius: BorderRadius.circular(15)),
                 child:const  Center(
                   child: Text(
-                    'Pagar',
+                    'Continuar ',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,

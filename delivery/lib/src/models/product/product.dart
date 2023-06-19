@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));

@@ -1,5 +1,4 @@
 import 'package:delivery/src/controllers/clientControllers/client_products_list_controller.dart';
-import 'package:delivery/src/pages/custom-widgets/Buttons/rounded_button.dart';
 import 'package:delivery/src/pages/custom-widgets/no_data_widget/no_data_widget.dart';
 import 'package:delivery/src/models/category/category.dart';
 import 'package:delivery/src/models/product/product.dart';
@@ -7,34 +6,24 @@ import 'package:delivery/src/pages/client/list/tabs/my_order_tab/View/my_order_t
 import 'package:delivery/src/pages/client/list/tabs/profile_tab/View/client/profile_tab_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-
-import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-
 import '../../../../../custom-widgets/Headers/header_text.dart';
 import '../../../../../../utils/my_colors.dart';
 
 class ExploreTabClient extends StatefulWidget {
   const ExploreTabClient({super.key});
-
   @override
   State<ExploreTabClient> createState() => _ExploreTabClientState();
 }
 
 class _ExploreTabClientState extends State<ExploreTabClient> {
   final ClientProductsListController _con = ClientProductsListController();
-  
-
   @override
   void initState() {
     super.initState();
-
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context, refresh);
     });
   }
-
-  
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -185,8 +174,6 @@ class _ExploreTabClientState extends State<ExploreTabClient> {
             return FutureBuilder(
               future: _con.getProducts(category.id!),
               builder: (context, AsyncSnapshot<List<Product>> snapshot){
-                print('snapshot${snapshot.hasData}');
-
                 if(snapshot.hasData){
                   if((snapshot.data?.length)! > 0){
                     return GridView.builder(
@@ -199,26 +186,20 @@ class _ExploreTabClientState extends State<ExploreTabClient> {
                 itemBuilder:(_, index){
                   return WidgetCardContainer(con: _con, product:  snapshot.data![index]);
                 }
-                
                 );
-
                   }else{
                     return NoDataWidget(text: 'lo sentimos, no encontramos elementos en esta categoría.\n \nprueba con otras categorias');
                   }
                 }else{
                     return NoDataWidget(text: 'lo sentimos, no encontramos elementos en esta categoría.\n \nprueba con otras categorias');
-
                 }
-              
             }
-            
             );
           }).toList(),
         ),
       ),
     );
   }
-
   void refresh() {
     setState(() {});
   }
@@ -226,16 +207,12 @@ class _ExploreTabClientState extends State<ExploreTabClient> {
 
 class WidgetCardContainer extends StatelessWidget {
      const WidgetCardContainer({super.key, 
-    required ClientProductsListController con, required this.product,
-    
+    required ClientProductsListController con, required this.product, 
   }) : _con = con;
   final Product product;
   final ClientProductsListController _con;
-
-
  @override
   Widget build(BuildContext context) {
-  
   return GestureDetector(
     onTap: (){
     _con.openBottomSheet(product);

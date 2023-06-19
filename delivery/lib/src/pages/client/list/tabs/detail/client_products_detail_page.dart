@@ -10,7 +10,6 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 class ClientProductsDetailPage extends StatefulWidget {
   Product product;
   ClientProductsDetailPage({super.key, required this.product});
-
   @override
   State<ClientProductsDetailPage> createState() =>
       _ClientProductsDetailPageState();
@@ -18,7 +17,6 @@ class ClientProductsDetailPage extends StatefulWidget {
 
 class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
   final ClientProductsDetailController _con = ClientProductsDetailController();
-
   @override
   void initState() {
     super.initState();
@@ -26,7 +24,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
       _con.init(context, refresh, widget.product);
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +32,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
         child: Column(
           children: [
             SizedBox(
-              
               height: screenHeight.getScreenHeight(
                   context: context, multiplier: 0.10),
               child: Padding(
@@ -68,7 +64,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                   context: context, multiplier: 0.42),
               width: double.infinity,
               child: Container(
-                
                 width: double.infinity,
                 height: screenHeight.getScreenHeight(
                     context: context, multiplier: 0.42),
@@ -133,7 +128,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                 ),
               ),
             ),
-
             // sub content
             SizedBox(
               height: screenHeight.getScreenHeight(
@@ -204,11 +198,8 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                                             ),
                                       ),
                                     ),
-
-
                                       ],
                                     ),
-                                    
                                     Container(
                                       margin: const EdgeInsets.only(top: 10),
                                       child: Text(
@@ -317,7 +308,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
       ),
     );
   }
-
   void refresh() {
     setState(() {});
   }

@@ -18,15 +18,19 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as location;
 
 import 'package:url_launcher/url_launcher_string.dart';
+// ignore: library_prefixes
+import 'package:socket_io_client/socket_io_client.dart' as IO;
+
 
 class ClientOrdersMapcontroller {
   BuildContext? context;
   Function? refresh;
   Position? _position;
-  StreamSubscription? _positionStream;
+
 
   String? addressName;
-  LatLng? addressLatLng;
+  LatLng? addressLatLng; 
+  IO.Socket? socket;
 
   CameraPosition initialPosition =
       const CameraPosition(target: LatLng(6.313350, -75.582922), zoom: 14);
@@ -59,6 +63,20 @@ final SharedPref _sharedPref = SharedPref();
     }
     deliveryMarker = await createMarkFromAssets('assets/images/food-delivery.png');
     homeMarker = await createMarkFromAssets('assets/images/home2.png');
+
+     IO.Socket socket = IO.io(
+        'http://${Environment.API_DELIVERY}/orders/delivery', <String, dynamic>{
+      'transports': ['websocket'],
+    });
+
+    socket.onConnect((_) {
+      print('SE HA CONECTADO AL SERVIDOR');
+     
+    });
+
+    socket.on('position/${order?.id}', (data) {
+    print('Data enviada desde el delivery$data');
+    });
     
       user = User.fromJson(await _sharedPref.read('user'));
     _ordersProvider.init(context, sessionUser: user);
@@ -205,7 +223,7 @@ final SharedPref _sharedPref = SharedPref();
   }
 
   void dispose(){
-    _positionStream?.cancel();
+    socket?.disconnected;
   }
 
   //Obtiene geolozaciozaion google maps
@@ -221,21 +239,7 @@ final SharedPref _sharedPref = SharedPref();
     LatLng from = LatLng(_position!.latitude, _position!.longitude);
     LatLng to = const LatLng(6.301159, -75.571921);
     setPolylines(from, to);
-
-    Geolocator.getPositionStream(
-      locationSettings:const LocationSettings(
-        accuracy: LocationAccuracy.best,
-        distanceFilter: 1
-      )      
-    ).listen((Position posicion) {
-      _position = posicion;
-
-      addMarker('delivery', _position!.latitude, _position!.longitude, 'Posición Actual', '', deliveryMarker!);
-
-      animateCameratoPosition(_position!.latitude, _position!.longitude);
-      isCloseToDeliveryPosition();
-      refresh!();
-    });
+    refresh!();
 
   } catch (e) {
     print('Error: $e');

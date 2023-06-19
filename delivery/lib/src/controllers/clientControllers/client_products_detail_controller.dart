@@ -7,7 +7,6 @@ class ClientProductsDetailController {
   BuildContext? context;
   Function? refresh;
   Product? product;
-
   int counter = 1;
   double productPrice = 0.0;
   final SharedPref _sharedPref = SharedPref();
@@ -18,21 +17,17 @@ class ClientProductsDetailController {
     this.refresh = refresh;
     this.product = product;
     productPrice = product.price!;
-
     var orderData = await _sharedPref.read('order');
     selectedProducts = orderData != null
         ? Product.fromJsonList(orderData).toList
         : [];
-     
     // Verificar que todos los productos tengan un valor inicial para "quantify"
-    selectedProducts.forEach((product) {
+    for (var product in selectedProducts) {
       product.quantify ??= 1;
-
-    });
+    }
 //  print('Productos Seleccionados ${product.toJson()}');
     refresh();
   }
-
 void addToBag() {
   int index = selectedProducts.indexWhere((p) => p.id == product!.id);
   if (index == -1) {
@@ -47,14 +42,12 @@ void addToBag() {
   _sharedPref.save('order', selectedProducts);
   Fluttertoast.showToast(msg: 'Se agregó el producto');
 }
-
   void addItem() {
     counter = counter + 1;
     productPrice = (product?.price)! * counter;
     product?.quantify = counter;
     refresh!();
   }
-
   void removeItem() {
     if (counter > 1) {
       counter = counter - 1;
@@ -63,8 +56,6 @@ void addToBag() {
       refresh!();
     }
   }
-
- 
 }
 
 // import 'package:delivery/src/models/product/product.dart';

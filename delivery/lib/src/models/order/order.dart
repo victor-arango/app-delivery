@@ -3,15 +3,12 @@
 //     final order = orderFromJson(jsonString);
 
 import 'dart:convert';
-
 import 'package:delivery/src/models/address/address.dart';
 import 'package:delivery/src/models/product/product.dart';
 import 'package:delivery/src/models/users/user.dart';
 
 Order orderFromJson(String str) => Order.fromJson(json.decode(str));
-
 String orderToJson(Order data) => json.encode(data.toJson());
-
 class Order {
   String? id;
   String? idClient;
@@ -26,7 +23,6 @@ class Order {
   Address? address;
   User? delivery;
   String? idDelivery;
-
   Order({
     this.id,
     this.idClient,
@@ -41,7 +37,6 @@ class Order {
     this.address,
     this.idDelivery,
   });
-
   factory Order.fromJson(Map<String, dynamic> json) => Order(
         id: json["id"] is int ? json["id"].toString() : json['id'],
         idClient: json["id_client"],
@@ -56,9 +51,7 @@ class Order {
                 json["products"].map((model) =>model is Product ? model : Product.fromJson(model)))
             : [],
             client: json['client'] is String ? userFromJson(json['client']) : (json['client'] is User ? json['client'] : User.fromJson(json['client'] ?? {})),
-  delivery: json['delivery'] is String ? userFromJson(json['delivery']) : (json['delivery'] is User ? json['delivery'] : User.fromJson(json['delivery'] ?? {})),
-
-        // delivery: json['delivery'] is String ? userFromJson(json['delivery']) : User.fromJson(json['delivery'] ?? {}),
+        delivery: json['delivery'] is String ? userFromJson(json['delivery']) : (json['delivery'] is User ? json['delivery'] : User.fromJson(json['delivery'] ?? {})),
         address: json['address'] is String ? addressFromJson(json['address']) : json['address'] is Address ? json['address'] :  Address.fromJson(json['address'] ?? {}),
         idDelivery: json['id_delivery'],
       );

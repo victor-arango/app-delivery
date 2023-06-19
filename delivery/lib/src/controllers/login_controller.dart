@@ -52,12 +52,8 @@ class loginController {
   }
 
   void login() async {
-
-  
-    // Navigator.pushNamed(context!, 'tabs');
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
-
     if (email.isEmpty || password.isEmpty) {
       MySnackbar.show(
           context: context,
@@ -66,7 +62,6 @@ class loginController {
           text: 'Todos los campos son obligatorios');
       return;
     }
-
     if (RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
     } else {
       MySnackbar.show(
@@ -76,12 +71,7 @@ class loginController {
           text: 'Debes ingresar un correo electronico valido');
       return;
     }
-
     ResponseApi? responseApi = await usersProvider.login(email, password);
-
-
-
-
     if (responseApi?.success != null && responseApi?.success == true) {
       User user = User.fromJson(responseApi?.data);
       _sharedPref.save('user', user.toJson());
@@ -91,8 +81,6 @@ class loginController {
       } else {
         ruta = user.roles![0].route!.toString();
         Navigator.pushNamedAndRemoveUntil(context!, ruta!, (route) => false);
-
-      
       }
     } else {
       MySnackbarResponseApi.show(
@@ -101,8 +89,6 @@ class loginController {
           contentType: responseApi?.success,
           text: responseApi?.message);
     }
-      
-
       MySnackbarResponseApi.show(
           context: context,
           title: responseApi?.success,

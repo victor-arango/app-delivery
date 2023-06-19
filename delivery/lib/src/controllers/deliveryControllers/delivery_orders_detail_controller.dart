@@ -78,9 +78,9 @@ void updateOrder() async {
 
   void getTotal() {
     total = 0;
-    (order?.products ?? []).forEach((product) {
+    for (var product in (order?.products ?? [])) {
       total = total + ((product.price! )* (product.quantify!));
-    });
+    }
 
     refresh!();
   }
