@@ -9,6 +9,4 @@
 - Los dueños de restaurantes pueden gestionar su oferta de productos a través de la app.
 - Panel de administración para asignar personal de entrega a pedidos y hacer seguimiento de las entregas.
 
-![Preview Delivery-App]([https://github.com/victor-arango/natillera-app/blob/main/Preview.png?raw=true](https://github.com/victor-arango/app-delivery/blob/main/delivery/delivery-app.png?raw=true)https://github.com/victor-arango/app-delivery/blob/main/delivery/delivery-app.png?raw=true)
-
-
+![Delivery-App](https://github.com/victor-arango/app-delivery/blob/main/delivery/delivery-app.png?raw=true)
