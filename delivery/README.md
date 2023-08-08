@@ -1,16 +1,12 @@
-# delivery
+# Delivery app
 
-A new Flutter project.
+## Funcionalidades
 
-## Getting Started
+- Explora y descubre opciones de comida rápida de varios restaurantes en Medellín.
+- Realiza pedidos para entrega dentro de barrios específicos.
+- Sistema de autenticación seguro para proteger las cuentas de los usuarios.
+- Integración fluida con pasarelas de pago en línea para transacciones seguras y eficientes.
+- Los dueños de restaurantes pueden gestionar su oferta de productos a través de la app.
+- Panel de administración para asignar personal de entrega a pedidos y hacer seguimiento de las entregas.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Delivery-App](https://github.com/victor-arango/app-delivery/blob/main/delivery/delivery-app.png?raw=true)
